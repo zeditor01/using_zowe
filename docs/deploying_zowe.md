@@ -2,7 +2,7 @@
 
 Last Update to this page: 4 September 2024
 
-# Chapter Title
+# Deploying ZOWE
 
 ***Purpose of this Chapter***
 Blah blah
