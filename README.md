@@ -2,9 +2,9 @@
 Worked Examples of Deploying ZOWE and Associated Tools.
 
 ## Imagine...
-* Imagine having a beautiful browser-based graphical user interface to perform a wide range of Db2 z/OS Database Administration work tasks. 
-* In addition to the Db2 Catalog of Db2 objects, there is a Catalog of APIs to provide callable database services that can be re-used by multiple integrated tools.
-* And all of this can be provided from services running in z/OS, without needing to deploy any clients or servers outside of z/OS.
+* A productive browser-based graphical user interface to perform a wide range of Db2 z/OS Database Administration work tasks. 
+* A Catalog of APIs to provide callable database services that can be re-used by multiple integrated tools.
+* All provided from services running in z/OS, without needing to deploy any clients or servers outside of z/OS.
 
 ## ZOWE offers
 Zowe offers modern interfaces to interact with z/OS similar to what you may experience on cloud platforms today. 
