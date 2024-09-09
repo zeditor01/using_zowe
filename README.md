@@ -23,9 +23,8 @@ Deployment Worked Examples
 * [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)
 * [Deploying IBM Unified Management Server for z/OS]()
 * [Deploying IBM Db2 Administration Foundation]()
-* [Using IBM Db2 Administration Foundation]()
 * [Deploying IBM Db2 Automation Experience]()
-* [Using IBM Db2 Automation Experience]()
+
 
 Usage Worked Examples
 * [Using IBM Db2 Administration Foundation]()
