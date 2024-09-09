@@ -24,12 +24,12 @@ Deployment Worked Examples
 * [Deploying IBM Unified Management Server for z/OS]()
 * [Deploying IBM Db2 Administration Foundation]()
 * [Deploying IBM Db2 Automation Experience]()
-
+* [Deploying IBM Db2 Devops Experience]()
 
 Usage Worked Examples
 * [Using IBM Db2 Administration Foundation]()
 * [Using IBM Db2 Automation Experience]()
-
+* [Using IBM Db2 Devops Experience]()
 
 
 
