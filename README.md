@@ -13,14 +13,13 @@ Zowe offers modern interfaces to interact with z/OS similar to what you may expe
 
 The home of ZOWE is at [www.zowe.org](https://www.zowe.org/)
 
-<a href="https://www.zowe.org" target="_blank" rel="noopener noreferrer">new tab</a>
-
 ## IBM offers:
 A growing range of zowe-based tools for Db2 z/OS, based on the IBM Unified Management Server for z/OS, and the IBM Db2 Administration Foundation.
 
 ## This github repository offers:
 A structured set of worked examples for using the zowe-based DB2 tooling, at the pages linked below....
 
+Deployment Worked Examples
 * [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)
 * [Deploying IBM Unified Management Server for z/OS]()
 * [Deploying IBM Db2 Administration Foundation]()
@@ -28,7 +27,9 @@ A structured set of worked examples for using the zowe-based DB2 tooling, at the
 * [Deploying IBM Db2 Automation Experience]()
 * [Using IBM Db2 Automation Experience]()
 
-
+Usage Worked Examples
+* [Using IBM Db2 Administration Foundation]()
+* [Using IBM Db2 Automation Experience]()
 
 
 
