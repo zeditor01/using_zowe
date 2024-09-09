@@ -21,15 +21,15 @@ A structured set of worked examples for using the zowe-based DB2 tooling, at the
 
 Deployment Worked Examples
 * [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)
-* [Deploying IBM Unified Management Server for z/OS]()
-* [Deploying IBM Db2 Administration Foundation]()
-* [Deploying IBM Db2 Automation Experience]()
-* [Deploying IBM Db2 Devops Experience]()
+* [Deploying IBM Unified Management Server for z/OS](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_ums.md)
+* [Deploying IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2adminfoundation.md)
+* [Deploying IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2automationexperience.md)
+* [Deploying IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2devopsexperience.md)
 
 Usage Worked Examples
-* [Using IBM Db2 Administration Foundation]()
-* [Using IBM Db2 Automation Experience]()
-* [Using IBM Db2 Devops Experience]()
+* [Using IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2adminfoundation.md)
+* [Using IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2automationexperience.md)
+* [Using IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md)
 
 
 
