@@ -13,6 +13,8 @@ Zowe offers modern interfaces to interact with z/OS similar to what you may expe
 
 The home of ZOWE is at [www.zowe.org](https://www.zowe.org/)
 
+and in a new tab <a href="https://www.zowe.org" target="_blank" rel="noopener noreferrer">new tab</a>
+
 ## IBM offers:
 A growing range of zowe-based tools for Db2 z/OS, based on the IBM Unified Management Server for z/OS, and the IBM Db2 Administration Foundation.
 
