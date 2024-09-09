@@ -19,7 +19,7 @@ A growing range of zowe-based tools for Db2 z/OS, based on the IBM Unified Manag
 ## This github repository offers:
 A structured set of worked examples for using the zowe-based DB2 tooling, at the pages linked below....
 
-* [Deploying ZOWE]()
+* [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)
 * [Deploying IBM Unified Management Server for z/OS]()
 * [Deploying IBM Db2 Administration Foundation]()
 * [Using IBM Db2 Administration Foundation]()
