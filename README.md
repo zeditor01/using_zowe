@@ -1,6 +1,6 @@
 ![zowelogo](/images/zowelogo.JPG)
 
-# using_zowe
+# Using ZOWE
 Worked Examples of Deploying ZOWE and Associated Tools.
 
 ## Imagine...
@@ -13,7 +13,7 @@ Zowe offers modern interfaces to interact with z/OS similar to what you may expe
 
 The home of ZOWE is at [www.zowe.org](https://www.zowe.org/)
 
-## IBM Offers:
+## IBM offers:
 A growing range of zowe-based tools for Db2 z/OS, based on the IBM Unified Management Server for z/OS, and the IBM Db2 Administration Foundation.
 
 ## This github repository offers:
