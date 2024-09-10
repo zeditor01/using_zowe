@@ -266,11 +266,11 @@ Editing the ZWEYAML file is performed as one step of the UMS installation in the
 
 The actual parameters files that I used in this example and included within this github repository, links below. In addition to the ZWEYAML file
 
-[ZWEYAML - right-click-to-open-in-new-tab](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
+[ZWEYAML](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT) ... right mouse click to open in new tab.
 
 [IZPDB2PM](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDB2PM.TXT) ... right mouse click to open in new tab.
 
-[IZPDAFPM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT)
+[IZPDAFPM](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT) ... right mouse click to open in new tab.
 
 
 Write Detailed notes on the reasons behind each of these choices
