@@ -1,7 +1,7 @@
 ![zowelogo](/images/zowelogo.JPG)
 
 # Using ZOWE
-Worked Examples of Deploying ZOWE and Associated Tools.
+Worked Examples of Deploying ZOWE and Associated IBM Db2 Tools.
 
 ## Imagine...
 * A productive browser-based graphical user interface to perform a wide range of Db2 z/OS Database Administration work tasks. 
