@@ -384,11 +384,11 @@ IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
 
 ## 6. Operating UMS.
 
-Just Start ZOWE
+Just Start ZOWE same as before
 
 Watch Startup
 
-Sample joblog
+Sample joblog [here](https://github.com/zeditor01/using_zowe/blob/main/samples/ums_stc_out.txt)
 
 
 ## 7. Using the Unified Management Experience App
