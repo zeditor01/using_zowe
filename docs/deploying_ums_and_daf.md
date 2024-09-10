@@ -266,7 +266,7 @@ Editing the ZWEYAML file is performed as one step of the UMS installation in the
 
 The actual parameters files that I used in this example and included within this github repository, links below. In addition to the ZWEYAML file
 
-[ZWEYAML here](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
+[ZWEYAML - right-click-to-open-in-new-tab](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
 
 [IZPDB2PM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDB2PM.TXT)
 
