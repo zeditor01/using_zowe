@@ -20,16 +20,16 @@ A growing range of zowe-based tools for Db2 z/OS, based on the IBM Unified Manag
 A structured set of worked examples for using the zowe-based DB2 tooling, at the pages linked below....
 
 Deployment Worked Examples
-* [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)
-* [Deploying IBM Unified Management Server for z/OS](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_ums.md)
-* [Deploying IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2adminfoundation.md)
-* [Deploying IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2automationexperience.md)
-* [Deploying IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2devopsexperience.md)
+* [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)  Written
+* [Deploying IBM Unified Management Server for z/OS](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_ums.md)  Written
+* [Deploying IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2adminfoundation.md)  Written
+* [Deploying IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2automationexperience.md) Not yet written
+* [Deploying IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2devopsexperience.md) Not yet written
 
 Usage Worked Examples
-* [Using IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2adminfoundation.md)
-* [Using IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2automationexperience.md)
-* [Using IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md)
+* [Using IBM Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2adminfoundation.md) Not yet written
+* [Using IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2automationexperience.md) Not yet written
+* [Using IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md) Not yet written
 
 ## Step 0 : Start with z/OSMF
 ![zowe_deploy01](/images/zowe_deploy01.JPG)
