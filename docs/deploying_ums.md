@@ -50,13 +50,145 @@ You need to read the documentation carefully to ensure that you implement SAFOnl
 
 UMS V1.2 should be ordered as a portable software instance from ShopZ, and installed using the z/OSMF software management tool. Executing a PSI installation is standard fare for any systems programmer, and not repeated here.
 
-After installation, you will end up with a ZFS containing the UMS executables mounted at ```/usr/lpp/IBM/izp/v1r2m0/bin```
+### 2.1 z/OS datasets installed
+The PSI installation is outside the scope of this document. I performed a standard SMPE PSI installation to HLQ "IZP", resulting in the following z/OS Datasets
+```
+Data Set Names / Objects                       Volume
+---------------------------------------------- ------
+'IZP.AIZPBASE'                                 A3USR8
+'IZP.AIZPBIN'                                  A3USR3
+'IZP.AIZPCUSA'                                 A3USR4
+'IZP.AIZPCUSC'                                 A3USR3
+'IZP.AIZPCUSR'                                 A3USR4
+'IZP.AIZPCUST'                                 A3USR8
+'IZP.AIZPLOAD'                                 A3USR3
+'IZP.AIZPPARM'                                 A3USR5
+'IZP.AIZPPAX'                                  A3USR2
+'IZP.AIZPREXX'                                 A3USR2
+'IZP.AIZPSAMP'                                 A3USR4
+'IZP.CPAC.DB2.PARMLIB'                         A3USR4
+'IZP.CPAC.PDFPD'                               A3USR7
+'IZP.CPAC.PROD.PDF'                            A3USR2
+'IZP.CPAC.PROPVAR'                             A3USR2
+'IZP.CPAC.SCPPCENU'                            A3USR7
+'IZP.CPAC.SCPPLOAD'                            A3USR6
+'IZP.CPAC.WORKFLOW'                            A3USR6
+'IZP.CPACDB2.DOCLIB'                           A3USR2
+'IZP.CPACDB2.SAMPLIB'                          A3USR6
+'IZP.DBA.ENCRYPT'                              A3USR2
+'IZP.ENVIRON'                                  A3USR5
+'IZP.JCLLIB'                                   A3USR3
+'IZP.OMVS.SIZPROOT'                                  
+'IZP.OMVS.SIZPROOT.DATA'                       A3USR5
+'IZP.PARMLIB'                                  A3USR2
+'IZP.SAFXDBRM'                                 A3USR2
+'IZP.SAFXLLIB'                                 A3USR6
+'IZP.SAFXSAMP'                                 A3USR7
+'IZP.SAMPLIB'                                  A3USR3
+'IZP.SIZPBASE'                                 A3USR2
+'IZP.SIZPCUSA'                                 A3USR7
+'IZP.SIZPCUSC'                                 A3USR3
+'IZP.SIZPCUSR'                                 A3USR4
+'IZP.SIZPCUST'                                 A3USR6
+'IZP.SIZPLOAD'                                 A3USR4
+'IZP.SIZPPARM'                                 A3USR3
+'IZP.SIZPREXX'                                 A3USR8
+'IZP.SIZPSAMP'                                 A3USR3
+'IZP.SMPE.DB2.DLIB.CSI'                              
+'IZP.SMPE.DB2.DLIB.CSI.DATA'                   A3USR6
+'IZP.SMPE.DB2.DLIB.CSI.INDEX'                  A3USR6
+'IZP.SMPE.DB2.GLOBAL.CSI'                            
+'IZP.SMPE.DB2.GLOBAL.CSI.DATA'                 A3USR6
+'IZP.SMPE.DB2.GLOBAL.CSI.INDEX'                A3USR6
+'IZP.SMPE.DB2.SMPGLOG'                         A3USR4
+'IZP.SMPE.DB2.SMPGLOGA'                        A3USR8
+'IZP.SMPE.DB2.SMPPTS'                          A3USR4
+'IZP.SMPE.DB2.TARGET.CSI'                            
+'IZP.SMPE.DB2.TARGET.CSI.DATA'                 A3USR2
+'IZP.SMPE.DB2.TARGET.CSI.INDEX'                A3USR2
+'IZP.SMPE.DB2D300.SMPDLOG'                     A3USR3
+'IZP.SMPE.DB2D300.SMPDLOGA'                    A3USR5
+'IZP.SMPE.DB2T300.SMPMTS'                      A3USR7
+'IZP.SMPE.DB2T300.SMPSCDS'                     A3USR2
+'IZP.SMPE.DB2T300.SMPSTS'                      A3USR6
+'IZP.SMPE.DB2T300.SMPTLOG'                     A3USR3
+'IZP.SMPE.DB2T300.SMPTLOGA'                    A3USR4
+'IZP.TEAMLIST'                                 A3USR8
+'IZP.USERLIST'                                 A3USR7
+'IZP.USERLIST'                                 A3USR7 
+```
+
+### 2.2 USS filesystem mounted
+There is a ZFS filesystem that I mounted permenantly in PARMLIB as follows
+```                               
+MOUNT FILESYSTEM('IZP.OMVS.SIZPROOT')            
+      TYPE(ZFS)                                  
+      MODE(RDWR)                                 
+      NOAUTOMOVE                                 
+      MOUNTPOINT('/usr/lpp/IBM/izp/v1r2m0/bin')  
+```
+
+And the contents of the ZFS are as follows
+```
+IBMUSER:/Z31A/usr/lpp/IBM/izp/v1r2m0/bin: >ls -al
+total 274016
+drwxr-xr-x  17 OMVSKERN SYS1        8192 Jul  4 22:23 .
+drwxr-xr-x   3 OMVSKERN OMVSGRP     8192 Jul  4 22:33 ..
+drwxr-xr-x   2 OMVSKERN OMVSGRP     8192 Jun 13 05:25 IBM
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     1425 Jun 13 05:25 IZPCP
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     7035 Jun 13 05:25 IZPUNPAX
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     6088 Jun 13 05:25 IZPUNPX2
+drwxrwxr-x   3 OMVSKERN OMVSGRP     8192 Nov 28  2022 cidb
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   483840 Jun 13 05:25 cidb.pax
+drwxr-xr-x   3 OMVSKERN OMVSGRP     8192 Dec 15  2023 db2-auth
+-rwxrwxr-x   2 OMVSKERN OMVSGRP    32320 Jun 13 05:25 db2-auth.pax
+drwxr-xr-x   5 OMVSKERN OMVSGRP     8192 Dec 18  2023 ivp
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   516160 Jun 13 05:25 ivp.pax
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  89349120 Jun 13 05:25 izpserve.pax
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     1153 Jun 13 05:25 manifest.yaml
+drwxr-xr-x   2 OMVSKERN OMVSGRP     8192 Dec  1  2022 openssl
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  26417680 Jun 13 05:25 openssl.pax
+drwxr-xr-x   3 OMVSKERN OMVSGRP     8192 Nov 28  2022 platform
+-rwxrwxr-x   2 OMVSKERN OMVSGRP    32320 Jun 13 05:25 platform-activation.pax
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Dec 18  2023 ums
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Jun 21  2023 ums-security
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   483840 Jun 13 05:25 ums-security.pax
+drwxr-xr-x   7 OMVSKERN OMVSGRP     8192 Dec 15  2023 unified-ui
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  17224720 Jun 13 05:25 unified-ui.pax
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Sep 21  2023 zos-newton-daj
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   838720 Jun 13 05:25 zos-newton-daj.pax
+drwxrwxr-x   4 OMVSKERN OMVSGRP     8192 Nov 28  2022 zos-newton-db2ifi
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   612880 Jun 13 05:25 zos-newton-db2ifi.pax
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Aug  4  2023 zos-newton-discovery
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  1548320 Jun 13 05:25 zos-newton-discovery.pax
+drwxrwxr-x   4 OMVSKERN OMVSGRP     8192 Nov 28  2022 zos-newton-registry
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   548400 Jun 13 05:25 zos-newton-registry.pax
+drwxrwxr-x   4 OMVSKERN OMVSGRP     8192 Nov 28  2022 zos-newton-security
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   612880 Jun 13 05:25 zos-newton-security.pax
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Sep 21  2023 zss-data-provider
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  1193520 Jun 13 05:25 zss-data-provider.pax
+```
+
+Check the UMS documentation for SMPE tasks [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=begin-performing-smpe-installation-tasks)
 
 
+### 2.3 Program COntrol Authorisation
 
-Creating and Mounting a ZFS
+UMS Zowe plug-ins require Program Control authorization. In order to tag the files with this bit, the SMP/E install user requires BPX.FILEATTR.PROGCTL permission on the system.
 
-Installing / Unpacking the ZOWE product COde
+```
+extattr +p */zssServer/lib/*
+```
+
+So, I opened an ssh terminal, and navigated to the ```components.izp.runtimeDirectory``` directory, and executed the commad
+
+```
+IBMUSER:/Z31A/usr/lpp/IBM/izp/v1r2m0/bin: >pwd
+/Z31A/usr/lpp/IBM/izp/v1r2m0/bin
+IBMUSER:/Z31A/usr/lpp/IBM/izp/v1r2m0/bin: >extattr +p */zssServer/lib/*
+IBMUSER:/Z31A/usr/lpp/IBM/izp/v1r2m0/bin: >
+```
+
 
 ## 3. Editing the ZWEYAML parmlib file
 
