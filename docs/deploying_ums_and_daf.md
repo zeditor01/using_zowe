@@ -273,6 +273,17 @@ The actual parameters files that I used in this example and included within this
 [IZPDAFPM](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT) ... right mouse click to open in new tab.
 
 
+### 3.1 Editing Notes for ZWEYAML
+
+1. The purpose of the the IZP.CUST.PARMLIB(ZWEYAML) file is to define all the parameters that are needed to integrate with the existing ZOWE instance, conform to RACF security requirements, and make secure connections to Db2 z/OS.
+2. ZWEYAML is used as input to the IZPGENER job that creates all the customization JCLs to deploy UMS.
+3. ZWEYAML is also used at runtime for integrated operations with ZOWE.
+4. line 13 (enabled: true) allows you to disable/enable UMS when ZOWE starts up.
+
+### 3.2 Editing Notes for IZPDB2PM
+
+### 3.3 Editing Notes for IZPDAFPM
+
 Write Detailed notes on the reasons behind each of these choices
 
 * include DAF so there is something to test with UMS
