@@ -31,19 +31,19 @@ Usage Worked Examples
 * [Using IBM Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2automationexperience.md)
 * [Using IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md)
 
-Step 0 : Start with z/OSMF
+## Step 0 : Start with z/OSMF
 ![zowe_deploy01](/images/zowe_deploy01.JPG)
 
-Step 1 : Deploy ZOWE
+## Step 1 : Deploy ZOWE
 ![zowe_deploy02](/images/zowe_deploy02.JPG)
 
-Setp 2 : Deploy UMS
+## Step 2 : Deploy UMS
 ![zowe_deploy02](/images/zowe_deploy03.JPG)
 
-Step 3 : Deploy Db2 Admin Foundation
+## Step 3 : Deploy Db2 Admin Foundation
 ![zowe_deploy02](/images/zowe_deploy04.JPG)
 
-Setp 4 : Deploy additional Db2 (and IMS) experiences
+## Step 4 : Deploy additional Db2 (and IMS) experiences
 ![zowe_deploy02](/images/zowe_deploy05.JPG)
 
 
