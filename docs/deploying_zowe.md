@@ -18,7 +18,13 @@ ZOWE is the foundation for the new generation of Db2 tools. The scope of this ch
 
 ## 1. Planning for ZOWE.
 
-ZOWE depends upon z/OSMF, RACF and TCPIP infrastructure, as illustrated below.
+ZOWE depends upon z/OSMF, RACF and TCPIP infrastructure. 
+* The base applications provided by ZOWE all depend on calling services provided by z/OSMF.
+* zowe uses a certificate (optionally self-signed) for authentication and encryption purposes.
+* A RACF keyring stores that certificate, together wth the CA Certificate used by z/OSMF.
+* ZOWE listens to browser clients on port 7554 by default.
+* The entire configuration of zowe is stored in a YAML file, which is central to installation, configuration and runtime.
+
 ![zowe_deploy02](/images/zowe_deploy02.JPG)
 
 ZOWE documentation
