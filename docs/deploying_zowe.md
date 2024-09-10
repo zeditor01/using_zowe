@@ -27,7 +27,9 @@ ZOWE depends upon z/OSMF, RACF and TCPIP infrastructure.
 
 ![zowe_deploy02](/images/zowe_deploy02.JPG)
 
-ZOWE documentation
+This worked example is **NOT** a replacement for the [ZOWE documentation](https://docs.zowe.org/stable/user-guide/install-overview).
+It is a worked example that is intened to show readers a simple overview of deploying ZOWE. 
+Hopefully it will also make it easier to consume the ZOWE documentation.
 
 ZOWE architecture
 
