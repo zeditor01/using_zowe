@@ -5,21 +5,20 @@ Last Update to this page: 9 September 2024
 # Deploying UMS
 
 ***Purpose of this Chapter***
-Whilst UMS does have a couple of extra ZOWE Apps, it is primarily a pre-requisite for the Db2 tools. 
-Hence, the scope of this chapter is limited to a worked example of installing and deploying UMS.
+The scope of this chapter is a worked example of deploying UMS and Db2 Administration Foundation. This is really the entry level scope of installation effort to get started with Db2 Tools for ZOWE.
 
 ## Contents
-1. Planning for UMS.
-2. Installing the UMS product code.
+1. Planning for UMS and DAF.
+2. Installing the UMS and DAF product code.
 3. Editing the ZWEYAML parmlib file.
 4. Installing the UMS Instance.
 5. Configuring the UMS instance.
 6. Operating UMS.
-7. Using the UMS Base Apps.
+7. Using the Unified Server Application with Db2 Administration Foundation.
 8. Subsequent Upgrades.
 
 
-## 1. Planning for UMS.
+## 1. Planning for UMS and DAF.
 
 ### 1.1 How UMS fits in z/OS.
 UMS depends upon ZOWE as a pre-requisite. The Unified Management Service App runs in ZOWE and invokes services that are provided by Unified Management Server.
@@ -28,9 +27,11 @@ UMS utilised the same keyring and certificates as ZOWE. It is secured using the 
 
 UMS is installed into ZOWE, so that when ZOWE starts, it automatically starts UMS.
 
-![zowe_deploy03](/images/zowe_deploy03.JPG)
+DAF is simply an extra set of services called by UMS to provide the basic functions for Db2 Catalog Navigation, Command Execution, SQL Execution and SQL Statement Tuning.
 
-### 1.2 UMS documentation
+![zowe_deploy04](/images/zowe_deploy04.JPG)
+
+### 1.2 UMS and DAF documentation
 This worked example is **NOT** a replacement for the [UMS installation documentation](https://www.ibm.com/docs/en/umsfz/1.2.0).
 It is a worked example that is intened to show readers a chronological view of steps to perform. 
 Hopefully it will also make it easier to consume the ZOWE documentation.
@@ -52,9 +53,9 @@ You need to read the documentation carefully to ensure that you implement SAFOnl
 
 ## 2. Installing the ZOWE product code.
 
-UMS V1.2 should be ordered as a portable software instance from ShopZ, and installed using the z/OSMF software management tool. Executing a PSI installation is standard fare for any systems programmer, and not repeated here.
+UMS V1.2 and DAF V1.2 should both be ordered as a portable software instance from ShopZ, and installed using the z/OSMF software management tool. Executing a PSI installation is standard fare for any systems programmer, and not repeated here.
 
-### 2.1 z/OS datasets installed
+### 2.1 z/OS datasets installed for UMS
 The PSI installation is outside the scope of this document. I performed a standard SMPE PSI installation to HLQ "IZP", resulting in the following z/OS Datasets
 ```
 Data Set Names / Objects                       Volume
@@ -122,7 +123,7 @@ Data Set Names / Objects                       Volume
 'IZP.USERLIST'                                 A3USR7 
 ```
 
-### 2.2 USS filesystem mounted
+### 2.2 USS filesystem mounted for UMS
 There is a ZFS filesystem that I mounted permenantly in PARMLIB as follows
 ```                               
 MOUNT FILESYSTEM('IZP.OMVS.SIZPROOT')            
@@ -173,10 +174,73 @@ drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Sep 21  2023 zss-data-provider
 -rwxrwxr-x   2 OMVSKERN OMVSGRP  1193520 Jun 13 05:25 zss-data-provider.pax
 ```
 
-Check the UMS documentation for SMPE tasks [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=begin-performing-smpe-installation-tasks)
+### 2.3 z/OS datasets installed for UMS
+The PSI installation is outside the scope of this document. I performed a standard SMPE PSI installation to HLQ "AFX", resulting in the following z/OS Datasets
+```
+'AFX.AAFXBASE'                                 A3USR2
+'AFX.AAFXBIN'                                  A3USR7
+'AFX.AAFXSAMP'                                 A3USR3
+'AFX.CPAC.DB2.PARMLIB'                         A3USR6
+'AFX.CPAC.PDFPD'                               A3USR8
+'AFX.CPAC.PROD.PDF'                            A3USR6
+'AFX.CPAC.PROPVAR'                             A3USR5
+'AFX.CPAC.SCPPCENU'                            A3USR6
+'AFX.CPAC.SCPPLOAD'                            A3USR4
+'AFX.CPAC.WORKFLOW'                            A3USR8
+'AFX.CPACDB2.DOCLIB'                           A3USR2
+'AFX.CPACDB2.SAMPLIB'                          A3USR5
+'AFX.OMVS.SAFXROOT'                                  
+'AFX.OMVS.SAFXROOT.DATA'                       A3USR8
+'AFX.SAFXBASE'                                 A3USR8
+'AFX.SAFXSAMP'                                 A3USR2
+'AFX.SMPE.DB2.DLIB.CSI'                              
+'AFX.SMPE.DB2.DLIB.CSI.DATA'                   A3USR5
+'AFX.SMPE.DB2.DLIB.CSI.INDEX'                  A3USR5
+'AFX.SMPE.DB2.GLOBAL.CSI'                            
+'AFX.SMPE.DB2.GLOBAL.CSI.DATA'                 A3USR5
+'AFX.SMPE.DB2.GLOBAL.CSI.INDEX'                A3USR5
+'AFX.SMPE.DB2.SMPGLOG'                         A3USR6
+'AFX.SMPE.DB2.SMPGLOGA'                        A3USR5
+'AFX.SMPE.DB2.SMPPTS'                          A3USR8
+'AFX.SMPE.DB2.TARGET.CSI'                            
+'AFX.SMPE.DB2.TARGET.CSI.DATA'                 A3USR7
+'AFX.SMPE.DB2.TARGET.CSI.INDEX'                A3USR7
+'AFX.SMPE.DB2D300.SMPDLOG'                     A3USR8
+'AFX.SMPE.DB2D300.SMPDLOGA'                    A3USR3
+'AFX.SMPE.DB2T300.SMPMTS'                      A3USR8
+'AFX.SMPE.DB2T300.SMPSCDS'                     A3USR5
+'AFX.SMPE.DB2T300.SMPSTS'                      A3USR6
+'AFX.SMPE.DB2T300.SMPTLOG'                     A3USR7
+'AFX.SMPE.DB2T300.SMPTLOGA'                    A3USR8
+```
 
+### 2.2 USS filesystem mounted for UMS
+There is a ZFS filesystem that I mounted permenantly in PARMLIB as follows
+```                                                      
+ MOUNT FILESYSTEM('AFX.OMVS.SAFXROOT')          
+       TYPE(ZFS)                                
+       MODE(RDWR)                               
+       NOAUTOMOVE                               
+       MOUNTPOINT('/usr/lpp/IBM/afx/v1r2m0/bin')
+```
 
-### 2.3 Program Control Authorisation
+And the contents of the ZFS are as follows
+```
+IBMUSER:/Z31A/usr/lpp/IBM/afx/v1r2m0/bin: >ls -al
+total 18928
+drwxr-xr-x   5 OMVSKERN SYS1        8192 Jul 19 20:04 .
+drwxr-xr-x   3 OMVSKERN OMVSGRP     8192 Jul 19 20:10 ..
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     6079 Jul 18 20:32 AFXUNPAX
+-rwxrwxr-x   2 OMVSKERN OMVSGRP     6088 Jul 18 20:32 AFXUNPX2
+drwxr-xr-x   2 OMVSKERN OMVSGRP     8192 Jul 18 20:32 IBM
+drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Dec 15  2023 admin-fdn-db2
+-rwxrwxr-x   2 OMVSKERN OMVSGRP    64560 Jul 18 20:32 db2-admin-fdn-opt.pax
+-rwxrwxr-x   2 OMVSKERN OMVSGRP   161280 Jul 18 20:32 db2-admin-fdn-var.pax
+drwxr-xr-x   5 OMVSKERN OMVSGRP     8192 Dec 15  2023 single_ddl
+-rwxrwxr-x   2 OMVSKERN OMVSGRP  9386560 Jul 18 20:32 single_ddl.pax
+```
+
+### 2.5 Program Control Authorisation
 
 UMS Zowe plug-ins require Program Control authorization. In order to tag the files with this bit, the SMP/E install user requires BPX.FILEATTR.PROGCTL permission on the system.
 
@@ -208,6 +272,17 @@ The actual parameters files that I used in this example and included within this
 
 [IZPDAFPM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT)
 
+
+Write Detailed notes on the reasons behind each of these choices
+
+* include DAF so there is something to test with UMS
+* useSAFOnly to fit with the strategic authentication method that will continue to be supported
+* PASSWORD is the only option for DB2
+* profileQualifier has loads of ramifications for the IZP RACF Class & Generic Profiles
+* DBAUSER - create one & use encrypted PWD as a RACF token
+* Point to ZOWE keyring & certificates
+* etc etc
+
 ```
 Edit IZP.CUST.PARMLIB(ZWEYAML) 
 - experiences
@@ -230,6 +305,8 @@ Edit IZP.CUST.PARMLIB(ZWEYAML)
 
 ## 4. Installing the UMS instance.
 
+The tasks below are my selection of tasks from [this](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server)
+
 ```
 Stop ZOWE
 Stop ZOWE Cross Memory Server
@@ -248,6 +325,8 @@ IZP.CUST.SAMPLIB(IZPGENER) - generates IZP.CUST.JCLLIB
 ```
 
 ## 5. Configuring the UMS instance.
+
+continuation of [this](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server)
 
 Work your way thru the JCLs
 ```
