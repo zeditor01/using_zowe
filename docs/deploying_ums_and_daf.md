@@ -268,7 +268,7 @@ The actual parameters files that I used in this example and included within this
 
 [ZWEYAML - right-click-to-open-in-new-tab](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
 
-[IZPDB2PM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDB2PM.TXT)
+[IZPDB2PM](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDB2PM.TXT) ... right mouse click to open in new tab.
 
 [IZPDAFPM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT)
 
