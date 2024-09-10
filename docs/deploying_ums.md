@@ -23,11 +23,15 @@ Hence, the scope of this chapter is limited to a worked example of installing an
 
 UMS documentation
 
-UMS architecture
+The UMS Knowledgecenter is [here](https://www.ibm.com/docs/en/umsfz/1.2.0)
 
-RACF
 
-This Worked Example
+### 1.2 Pre-Requisite Software
+
+The hardware and software pre-requisites for UMS and the Db2 experiences are documented [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-prerequisite-hardware-software)
+
+In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. You should check the pre-requisites before proceeding.
+
 
 ## 2. Installing the ZOWE product code.
 
