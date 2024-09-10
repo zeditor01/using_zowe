@@ -74,4 +74,15 @@ Adding additional experiences to the stack will be done in a very similar way to
 
 ![zowe_deploy05](/images/zowe_deploy05.JPG)
 
+## The Destination 
+
+Review what this new infrastructure allows us to do....
+
+1. Easily view and understand the database objects in your Db2 Subsystem(s).
+2. Manage the health of these database objects by utilising RTS health indicators to drive Db2 houskeeping automatically.
+3. ....
+4. Articulate the capabilities of the stack in terms that represent business value
+
+
+
 
