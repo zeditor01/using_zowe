@@ -21,13 +21,23 @@ Hence, the scope of this chapter is limited to a worked example of installing an
 
 ## 1. Planning for UMS.
 
-### 1.1 UMS documentation
+### 1.1 How UMS fits in z/OS.
+UMS depends upon ZOWE, z/OSMF, RACF and TCPIP infrastructure. 
+* The base applications provided by ZOWE all depend on calling services provided by z/OSMF. (Blue boxes below)
+* ZOWE uses a certificate (optionally self-signed) for authentication and encryption purposes.
+* A RACF keyring stores that certificate, together wth the CA Certificate used by z/OSMF, so that it can call z/OSMF services.
+* ZOWE listens to browser clients on port 7554 (default port, can be changed).
+* The entire configuration of zowe is stored in a YAML file, which is central to installation, configuration and runtime.
+
+![zowe_deploy03](/images/zowe_deploy03.JPG)
+
+### 1.2 UMS documentation
 This worked example is **NOT** a replacement for the [UMS installation documentation](https://www.ibm.com/docs/en/umsfz/1.2.0).
 It is a worked example that is intened to show readers a chronological view of steps to perform. 
 Hopefully it will also make it easier to consume the ZOWE documentation.
 
 
-### 1.2 Pre-Requisite Software
+### 1.3 Pre-Requisite Software
 The hardware and software pre-requisites for UMS and the Db2 experiences are documented [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-prerequisite-hardware-software)
 
 In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. You should check the pre-requisites before proceeding.
