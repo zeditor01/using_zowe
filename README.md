@@ -34,7 +34,7 @@ Usage Worked Examples
 ## Step 0 : Start with z/OSMF
 The starting point on your ZOWE journey is a fully functional z/OSMF service. Most sites should have this up and running already, because it is the recommended vehicle for installing software from ShopZ.
 
-z/OSMF should support secure connections from a web browser, to allow the user to invoke a range of applications and services.
+z/OSMF supports secure connections from a web browser, to allow the user to invoke a range of applications and services. The CA Certificate of z/OSMF must be imported into the Web Browsers trust store to enable secure connections.
 
 ![zowe_deploy01](/images/zowe_deploy01.JPG)
 
