@@ -275,10 +275,12 @@ The actual parameters files that I used in this example and included within this
 
 ### 3.1 Editing Notes for ZWEYAML
 
-1. The purpose of the the IZP.CUST.PARMLIB(ZWEYAML) file is to define all the parameters that are needed to integrate with the existing ZOWE instance, conform to RACF security requirements, and make secure connections to Db2 z/OS.
-2. ZWEYAML is used as input to the IZPGENER job that creates all the customization JCLs to deploy UMS.
-3. ZWEYAML is also used at runtime for integrated operations with ZOWE.
-4. line 13 (enabled: true) allows you to disable/enable UMS when ZOWE starts up.
+* The purpose of the the IZP.CUST.PARMLIB(ZWEYAML) file is to define all the parameters that are needed to integrate with the existing ZOWE instance, conform to RACF security requirements, and make secure connections to Db2 z/OS.
+* ZWEYAML is used as input to the IZPGENER job that creates all the customization JCLs to deploy UMS.
+* ZWEYAML is also used at runtime for integrated operations with ZOWE.
+* line 13 (enabled:) allows you to disable/enable UMS when ZOWE starts up.
+* lines 27 & 28 (experiences:) allows you to provide the USS path to executables of any experiences to be included. In the first case I am installing the Db2 Administration Foundation at the same time as UMS.
+* line
 
 ### 3.2 Editing Notes for IZPDB2PM
 
