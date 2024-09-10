@@ -19,15 +19,15 @@ Hence, the scope of this chapter is limited to a worked example of installing an
 8. Subsequent Upgrades.
 
 
-## 1. Planning for ZOWE.
+## 1. Planning for UMS.
 
-UMS documentation
-
-The UMS Knowledgecenter is [here](https://www.ibm.com/docs/en/umsfz/1.2.0)
+### 1.1 UMS documentation
+This worked example is **NOT** a replacement for the [UMS installation documentation](https://www.ibm.com/docs/en/umsfz/1.2.0).
+It is a worked example that is intened to show readers a chronological view of steps to perform. 
+Hopefully it will also make it easier to consume the ZOWE documentation.
 
 
 ### 1.2 Pre-Requisite Software
-
 The hardware and software pre-requisites for UMS and the Db2 experiences are documented [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-prerequisite-hardware-software)
 
 In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. You should check the pre-requisites before proceeding.
