@@ -48,6 +48,12 @@ You need to read the documentation carefully to ensure that you implement SAFOnl
 
 ## 2. Installing the ZOWE product code.
 
+UMS V1.2 should be ordered as a portable software instance from ShopZ, and installed using the z/OSMF software management tool. Executing a PSI installation is standard fare for any systems programmer, and not repeated here.
+
+After installation, you will end up with a ZFS containing the UMS executables mounted at ```/usr/lpp/IBM/izp/v1r2m0/bin```
+
+
+
 Creating and Mounting a ZFS
 
 Installing / Unpacking the ZOWE product COde
