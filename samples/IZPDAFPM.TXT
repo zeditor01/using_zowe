@@ -1,0 +1,121 @@
+#
+# IBM*
+# Rocket**
+# Licensed Materials - Property of IBM
+# 5698-UM1
+# (c) Copyright IBM Corp. 2018 - 2023 All Rights Reserved.
+# (c) Copyright Rocket Software, Inc. 2018 - 2023 All Rights Reserved.
+# *Trademark of International Business Machines.
+# **Trademark of Rocket Software, Inc.
+#
+
+# Db2 Administration Foundation Configuration
+
+# Note: must be edited with NUM OFF
+
+# Tablespace range to categorize partition as needs-action,
+# needs-attention or doing good.
+
+# Storage - Tablespace range to categorize partition as needs-action, needs-attention or doing good.
+TSStorage:
+  DOINGGOOD:
+    spaceLimit: ['0', '75']
+  NEEDSATTENTION:
+    spaceLimit: ['75', '90']
+  NEEDSACTION:
+    spaceLimit: ['90', '101']
+  ALL:
+    spaceLimit: ['0', '101']
+
+# Storage - Index range to categorize partition as needs-action, needs-attention or doing good.
+IXStorage:
+  DOINGGOOD:
+    spaceLimit: ['0', '75']
+  NEEDSATTENTION:
+    spaceLimit: ['75', '90']
+  NEEDSACTION:
+    spaceLimit: ['90', '101']
+  ALL:
+    spaceLimit: ['0', '101']
+
+# Statistics - Tablespace range to categorize partition as needs-action, needs-attention or doing good.
+TSStatistics:
+ DOINGGOOD:
+  CRUpdatedPagesPct: ['0', '1']
+  RRTInsertsPct: ['0', '15']
+  RRTDeletesPct: ['0', '15']
+  RRTIndRefLimit: ['0', '5']
+  RRTDataSpaceRat: ['0', '90']
+  RRTUnclustInsPct: ['0', '5']
+  RRTDisorgLOBPct: ['0', '35']
+  SRTInsDelUpdPct: ['0', '20']
+ NEEDSATTENTION:
+  CRUpdatedPagesPct: ['1', '10']
+  RRTInsertsPct: ['15', '25']
+  RRTDeletesPct: ['15', '25']
+  RRTIndRefLimit: ['5', '10']
+  RRTDataSpaceRat: ['90', '95']
+  RRTUnclustInsPct: ['5', '15']
+  RRTDisorgLOBPct: ['35', '50']
+  SRTInsDelUpdPct: ['20', '30']
+ NEEDSACTION:
+  CRUpdatedPagesPct: ['10', '101']
+  RRTInsertsPct: ['25', '101']
+  RRTDeletesPct: ['25', '101']
+  RRTIndRefLimit: ['10', '101']
+  RRTDataSpaceRat: ['95', '101']
+  RRTUnclustInsPct: ['15', '101']
+  RRTDisorgLOBPct: ['50', '101']
+  SRTInsDelUpdPct: ['30', '101']
+ ALL:
+  CRUpdatedPagesPct: ['0', '101']
+  RRTInsertsPct: ['0', '101']
+  RRTDeletesPct: ['0', '101']
+  RRTIndRefLimit: ['0', '101']
+  RRTDataSpaceRat: ['0', '101']
+  RRTUnclustInsPct: ['0', '101']
+  RRTDisorgLOBPct: ['0', '101']
+  SRTInsDelUpdPct: ['0', '101']
+
+# Index range to categorize partition as needs-action, needs-attention
+# or doing good.
+
+# Statistics - Index range to categorize partition as needs-action, needs-attention or doing good.
+IXStatistics:
+ DOINGGOOD:
+  CRUpdatedPagesPct: ['0', '1']
+  RRTInsertsPct: ['0', '15']
+  RRTDeletesPct: ['0', '15']
+  RRIPseudoDeletePct: ['0', '20']
+  RRIEmptyLimit: ['0', '15']
+  RRIAppendInsertPct: ['0', '20']
+  RRILeafLimit: ['0', '10']
+  SRIInsDelPct: ['0', '20']
+ NEEDSATTENTION:
+  CRUpdatedPagesPct: ['1', '10']
+  RRTInsertsPct: ['15', '25']
+  RRTDeletesPct: ['15', '25']
+  RRIPseudoDeletePct: ['20', '30']
+  RRIEmptyLimit: ['15', '25']
+  RRIAppendInsertPct: ['20', '30']
+  RRILeafLimit: ['10', '20']
+  SRIInsDelPct: ['20', '30']
+ NEEDSACTION:
+  CRUpdatedPagesPct: ['10', '101']
+  RRTInsertsPct: ['25', '101']
+  RRTDeletesPct: ['25', '101']
+  RRIPseudoDeletePct: ['30', '101']
+  RRIEmptyLimit: ['25', '101']
+  RRIAppendInsertPct: ['30', '101']
+  RRILeafLimit: ['20', '101']
+  SRIInsDelPct: ['30', '101']
+ ALL:
+  CRUpdatedPagesPct: ['0', '101']
+  RRTInsertsPct: ['0', '101']
+  RRTDeletesPct: ['0', '101']
+  RRIPseudoDeletePct: ['0', '101']
+  RRIEmptyLimit: ['0', '101']
+  RRIAppendInsertPct: ['0', '101']
+  RRILeafLimit: ['0', '101']
+  SRIInsDelPct: ['0', '101']
+

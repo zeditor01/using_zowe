@@ -1,0 +1,186 @@
+#
+# IBM*
+# Rocket**
+# Licensed Materials - Property of IBM
+# 5698-UM1
+# (c) Copyright IBM Corp. 2018 - 2023 All Rights Reserved.
+# (c) Copyright Rocket Software, Inc. 2018 - 2023 All Rights Reserved.
+# *Trademark of International Business Machines.
+# **Trademark of Rocket Software, Inc.
+#
+
+# Db2 Subsystem and related tools configuration settings.
+
+# Note: must be edited with NUM OFF
+
+# Post installation information
+
+# All SYSNAMEs on which to APF authorize DB2 datasets
+# Note, must include multiple systems in double quotes, e.g.
+# IZP_DB2_ALL_SYSNAMES: "SYS1 SYS2"
+# Required parameter
+IZP_DB2_ALL_SYSNAMES:
+
+# Member name for PROCLIB entry to be run post-IPL, which
+# will invoke the APF authorization facility
+# Required parameter
+IZP_DB2_IPL: IZPDB2IP
+
+# Server execution information
+
+# ISPF Message library
+# Required Parameter
+ISPFMessageLibrary: ISP.SISPMENU
+
+# ISPF Skeleton library
+# Required Parameter
+ISPFSkeletonLibrary: ISP.SISPSENU
+
+# ISPF Table library
+# Required Parameter
+ISPFTableLibrary: ISP.SISPTENU
+
+# ISPF Load library
+# Required Parameter
+ISPFLoadLibrary: ISP.SISPLOAD
+
+# ISPF LPA library
+# Required Parameter
+ISPFLPALibrary: ISP.SISPLPA
+
+# Owner of Db2 databases and table spaces.
+# Note: any value here will be converted to upper case.
+# Optional Parameter
+# Default value is '<NONE>'
+dbaSqlid: '<NONE>'
+
+# This variable ONLY affects the default state of the "Suppress Grants" control
+# on the UI for registering new Db2 sbusystems. It has no effect at runtime.
+# The value selected on subsystem registration page for 'suppressDb2Grants' variable
+# is the only value used at runtime to control whether UMS issues GRANT statements.
+# In v 1.2.0.4 affects only subsystem registration process.
+# In a later release, GRANT suppression will be applied to all interactions with
+# Db2 subsystems (e.g., in many operations performed by Db2 Devops features such as
+# instance provisioning)
+# Use defaultDb2GrantSuppression true if you are using external
+# Db2 security or Db2 SEPARATE_SECURITY=YES and do not want
+# any Db2 grants issued automatically by the product.
+# You must manually issue the grants
+# or equivalent ESM permissions instead.
+defaultDb2GrantSuppression: false
+
+# High-level qualifier (HLQ) for temporary Data sets created during
+# different JCL Jobs execution.
+# Value must be 1 to 14 characters in length.
+# Optional parameter
+tempDatasetHLQ:
+
+# Name of the default plan that UMS will always bind to a particular
+# subsystem
+# Required Parameter
+defaultPlanName: NWTNPLAN
+
+# SQL Timeout
+sqlTimeout: 10
+
+########################################################################
+# Third party service integration
+# Configuring tuning server
+
+# Host address
+# Optional Parameter
+tuningHost:
+
+# Port
+# Optional Parameter
+tuningPort:
+
+# Enable communication from UMS to Tuning Services server
+# Default: true (recommended)
+tuningThroughHttps: true
+
+# Application Id is the linkname of the subsystem
+# used to set up repository database.
+# Mandatory when MFA is enabled.
+tuningApplicationId: APPLDB1C
+
+# Security mechanism id
+# Allowed values: CLEAR_TEXT_PASSWORD_SECURITY(3),
+# USER_ONLY_SECURITY(4), ENCRYPTED_PASSWORD_SECURITY(7),
+# ENCRYPTED_USER_AND_PASSWORD_SECURITY(9),
+# KERBEROS_SECURITY(11), ENCRYPTED_USER_AND_DATA_SECURITY(12),
+# ENCRYPTED_USER_PASSWORD_AND_DATA_SECURITY(13),
+# PLUGIN_SECURITY(15), ENCRYPTED_USER_ONLY_SECURITY(16)
+# Default: 3
+tuningDb2SecurityMechanismId: 3
+
+# To configure the response buffer size for tuning service.
+# Memory Size in MB.
+# Set to default value 10.
+maxInMemorySize: 10
+
+# Configuring idaa server
+
+# Host address
+# Optional Parameter
+idaaHost:
+
+# Port
+# Optional Parameter
+idaaPort:
+
+# Enable communication from UMS to IDAA Services server
+# Default: true (recommended)
+idaaThroughHttps: true
+
+#Accelerator Version
+#Setting default to 2 as IDAA services only supports V7 accelerator version (recommended)
+#Required Parameter
+acceleratorVersion: 2
+
+# Security mechanism id
+# Allowed values: CLEAR_TEXT_PASSWORD_SECURITY(3),
+# USER_ONLY_SECURITY(4), ENCRYPTED_PASSWORD_SECURITY(7),
+# ENCRYPTED_USER_AND_PASSWORD_SECURITY(9),
+# KERBEROS_SECURITY(11), ENCRYPTED_USER_AND_DATA_SECURITY(12),
+# ENCRYPTED_USER_PASSWORD_AND_DATA_SECURITY(13),
+# PLUGIN_SECURITY(15), ENCRYPTED_USER_ONLY_SECURITY(16)
+# Default: 3
+idaaDb2SecurityMechanismId: 3
+
+idaaFileDirectory:
+
+# Required Parameters
+# High-level qualifier (HLQ) and prefix for user data sets created and
+# written to during various JCL Jobs execution. Eg, using the sample values,
+# registring a Db2 subsystem will write to HLQ.IZP.DSN.SIZPTLIB
+# It is recommended to use the UMS read/write HLQ specified by
+# components.izp.dataset.hlq in ZWEYAML.
+# Sample value: HLQ.IZP.DSN
+IZP_DB2_USR_HLQ: IZP.CUST
+# Sample value (recommended): SIZP
+IZP_DB2_USR_PREFIX: SIZP
+
+# Required Parameters
+# High-level qualifier (HLQ) and prefix for IBM Db2 Administration Tool (ADB)
+# related data sets to be concatenated in various generated JCL.
+# If using IBM Db2 Administration Tool for z/OS, specify HLQ where
+# ADB functionality was SMPE installed.
+# Otherwise enter the UMS read/write HLQ specified by
+# components.izp.dataset.hlq in ZWEYAML.
+# Sample value: HLQ.ADB.DSN
+# Sample value: HLQ.IZP.DSN
+IZP_DB2_ADB_HLQ: ADBD10
+# Sample value (if using IBM Admin Tool): SADB
+# Sample value (otherwise, using Admin Foundation files) : SAFX
+IZP_DB2_ADB_PREFIX: SADB
+
+# Required parameters only for Db2 DevOps Experience, empty otherwise.
+# High-level qualifier (HLQ) and prefix for IBM Db2 Object Comparison
+# Tool for z/OS (GOC) related data sets to be concatenated in various
+# generated JCL.
+# Specify HLQ where GOC functionality was SMPE installed.
+# Sample value: HLQ.GOC.DSN
+IZP_DB2_GOC_HLQ:
+# Sample value (recommended): SGOC
+IZP_DB2_GOC_PREFIX: SGOC
