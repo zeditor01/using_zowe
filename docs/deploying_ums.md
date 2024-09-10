@@ -22,12 +22,11 @@ Hence, the scope of this chapter is limited to a worked example of installing an
 ## 1. Planning for UMS.
 
 ### 1.1 How UMS fits in z/OS.
-UMS depends upon ZOWE, z/OSMF, RACF and TCPIP infrastructure. 
-* The base applications provided by ZOWE all depend on calling services provided by z/OSMF. (Blue boxes below)
-* ZOWE uses a certificate (optionally self-signed) for authentication and encryption purposes.
-* A RACF keyring stores that certificate, together wth the CA Certificate used by z/OSMF, so that it can call z/OSMF services.
-* ZOWE listens to browser clients on port 7554 (default port, can be changed).
-* The entire configuration of zowe is stored in a YAML file, which is central to installation, configuration and runtime.
+UMS depends upon ZOWE as a pre-requisite. The Unified Management Service App runs in ZOWE and invokes services that are provided by Unified Management Server.
+
+UMS utilised the same keyring and certificates as ZOWE. It is secured using the RACF IZP class. It is strongly recommended to configure UMS to execute in SAFOnly mode, so that all access is controlled by the SAF (RACF in this worked example). 
+
+UMS is installed into ZOWE, so that when ZOWE starts, it automatically starts UMS.
 
 ![zowe_deploy03](/images/zowe_deploy03.JPG)
 
