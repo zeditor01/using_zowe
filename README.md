@@ -32,6 +32,7 @@ Usage Worked Examples
 * [Using IBM Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md) Not yet written
 
 ## Step 0 : Start with z/OSMF
+The starting point on your ZOWE journey is a fully functional z/OSMF service. Most sites should have this up and running already, because it is the recommended vehicle for installing software from ShopZ.
 ![zowe_deploy01](/images/zowe_deploy01.JPG)
 
 ## Step 1 : Deploy ZOWE
