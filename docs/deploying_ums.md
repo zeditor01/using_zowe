@@ -41,7 +41,15 @@ Section 1
 
 Section 2
 
-Section N
+hint right click - open in new tab
+
+[ZWEYAML here](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
+
+[IZPDB2PM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDB2PM.TXT)
+
+[IZPDAFPM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT)
+
+
 
 ## 4. Installing the UMS instance.
 
