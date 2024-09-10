@@ -42,6 +42,10 @@ The hardware and software pre-requisites for UMS and the Db2 experiences are doc
 In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. You should check the pre-requisites before proceeding.
 
 
+### 1.4 Authentication Strategy
+Older versions of UMS supported a dataset-based authentication system. This is being depracated in favour of SAF only authentication. The V1.2 knowledge centre still contains details of both authentication models. 
+You need to read the documentation carefully to ensure that you implement SAFOnly security. A summary of the change can be found [here](https://community.ibm.com/community/user/datamanagement/blogs/jrn-thyssen1/2023/08/30/security-enhancement-for-ibm-unified-management-se)
+
 ## 2. Installing the ZOWE product code.
 
 Creating and Mounting a ZFS
