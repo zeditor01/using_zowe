@@ -18,6 +18,9 @@ ZOWE is the foundation for the new generation of Db2 tools. The scope of this ch
 
 ## 1. Planning for ZOWE.
 
+ZOWE depends upon z/OSMF, RACF and TCPIP infrastructure, as illustrated below.
+
+
 ZOWE documentation
 
 ZOWE architecture
