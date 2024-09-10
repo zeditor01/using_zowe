@@ -277,6 +277,7 @@ Write Detailed notes on the reasons behind each of these choices
 
 * include DAF so there is something to test with UMS
 * useSAFOnly to fit with the strategic authentication method that will continue to be supported
+* credential management tokens - MFA ?
 * PASSWORD is the only option for DB2
 * profileQualifier has loads of ramifications for the IZP RACF Class & Generic Profiles
 * DBAUSER - create one & use encrypted PWD as a RACF token
