@@ -137,7 +137,7 @@ If you've not come across yaml files yet, yaml stands for 'yet another markup la
 5. components (Defines detailed configurations for each Zowe component or extension)
 6. haInstances (Defines customized configurations for each High Availability (HA) instance)
 
-I prepared the following [zowe.yaml](https://github.com/zeditor01/zowetools/blob/main/code/zowe.yaml) file for my system. ***Hint: right mouse click + open link in new tab.***
+I prepared the following [zowe.yaml](https://github.com/zeditor01/using_zowe/blob/main/samples/zowe.yaml) file for my system. ***Hint: right mouse click + open link in new tab.***
 
 Note the following parameters
 
@@ -199,69 +199,137 @@ Once you've edited the zowe.yaml file, everything else should flow easily.
 ## 4. Installing the ZOWE instance libraries.
 
 
-### 4.1 environment variables
-export NODE_HOME=/usr/lpp/IBM/cnj/v20r11
-export PATH=/usr/lpp/IBM/cnj/v20r11/bin:$PATH
-export PATH=/usr/lpp/zwe/zwe217/bin:$PATH
+The zowe.yaml file controls the ZWE INSTALL Script.
 
+First, Check your USS environment variables. You may edit your .profile to include the following specifications
 
-Invoking the Installer
+```
+# JAVA                                                                                               
+export JAVA_HOME=/usr/lpp/java/J8.0_64                                 
+export PATH=$JAVA_HOME/bin:$PATH                                                                          
+# Node.js                                                              
+export NODE_HOME=/usr/lpp/IBM/cnj/v20r11                               
+export PATH=/usr/lpp/IBM/cnj/v20r11/bin:$PATH                          
+export PATH=/usr/lpp/zwe/zwe217/bin:$PATH                              
+```
+
+Open a new USS shell (in order to execute your .profile) and run the following command.
+
+```
+zwe install -v -c /usr/lpp/zwe/zwe217/zowe.yaml
+```
+
+It should chunter away and create the following z/OS datasets
+```
+'ZWE217.SZWEAUTH'                              A3USR5
+'ZWE217.SZWEEXEC'                              A3USR2
+'ZWE217.SZWELOAD'                              A3USR6
+'ZWE217.SZWESAMP'                              A3USR7 
+```
+
+That's it : The execution libraries are in place.
 
 ## 5. Configuring the ZOWE instance.
 
-Invoking the Configuration
-
-## 6. Operating ZOWE.
-
-PARMLIB
-
-Automated Operations
-
-## 7. Using the ZOWE Base Apps.
-
-JES Explorer
-
-Editor
-
-TN3270
-
-## 8. Subsequent Upgrades.
-
-Parallel ZOWE instances
-
-Upgrading a single ZOWE instance
-
+You can run the commands individually - but the ```--update-config --allow-overwrite``` options don't work so well like that.
 
 ```
-ZOWE
+zwe init mvs --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init security --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init apfauth --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init certificate --security-dry-run -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init certificate --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init vsam --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+zwe init stc --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+```
 
-unpack the convenience install tarball
+So - we did the whole schmoogle in one step. My experience was that this worked first time.
 
-Edit /usr/lpp/zwe/zwe217/zowe.yaml
+```
+zwe init --update-config --allow-overwrite -v -c /usr/lpp/zwe/zowe/zowe.yaml
+```
 
-zwe install -v -c /usr/lpp/zwe/zwe217/zowe.yaml
+You might want to check some of the artefacts that were created. 
+For example, a RACF query ```racdcert id(ZWESVUSR) listring(ZoweKeyring)``` to see the contents of the ZoweKeyring that was created.
 
-zwe init --update-config --allow-overwrite -v -c /usr/lpp/zwe/zwe217/zowe.yaml
-
-Check certificates
-racdcert id(ZWESVUSR) listring(ZoweKeyring)                           
+```
+Digital ring information for user ZWESVUSR:                           
+                                                                      
   Ring:                                                               
-  >ZoweKeyring<                                                  
+       >ZoweKeyring<                                                  
   Certificate Label Name             Cert Owner     USAGE      DEFAULT
   --------------------------------   ------------   --------   -------
   zowes0w1ca                         CERTAUTH       CERTAUTH     NO   
+                                                                      
   zowes0w1                           ID(ZWESVUSR)   PERSONAL     YES  
+                                                                      
   zOSMFCA                            CERTAUTH       CERTAUTH     NO   
-  
-zwe config validate -c /usr/lpp/zwe/zowe/zowe.yaml
+```
 
-USER.Z31A.PARMLIB(SCHEDAL)
-PPT PGMNAME(ZWESIS01) NOSWAP KEY(4) /* Zowe cross memory           */
-PPT PGMNAME(ZWESAUX)  NOSWAP KEY(4) /* Zowe auxiliary (AUX)        */
+Under certificate model 3, Zowe created a self-signed certificate and CA Cert, and placed it in ZoweKeyring, alongside the zOSMF CA Cert.
 
-S ZWESISTC,REUSASID=YES
-S ZWESLSTC  
-
-https://s0w1.dal-ebis.ihost.com:7554/zlux/ui/v1
+You should also check your PROCLIB to see the members placed in it.
 
 ```
+ZWESASTC
+ZWESISTC
+ZWESLSTC
+```
+
+## 6. Operating ZOWE.
+
+A few pieces of housekeeping before starting Zowe
+
+### 6.1 Edit zowe.yaml again
+
+Need to edit the zowe.yaml file: Need to comment out ```createZosmfTrust: true``` for zowe config validate and zowe start
+
+### 6.2 Edit Program Properties Table for these tasks
+
+Edit USER.Z31A.PARMLIB(SCHEDAL)
+```
+PPT PGMNAME(ZWESIS01) NOSWAP KEY(4) /* Zowe cross memory           */
+PPT PGMNAME(ZWESAUX)  NOSWAP KEY(4) /* Zowe auxiliary (AUX)        */
+```
+
+### 6.3 Start ZWESISTC
+
+z/OS operator console command: ```S ZWESISTC,REUSASID=YES```
+
+### 6.4 Start ZWESLSTC
+
+z/OS operator console command: ```S ZWESLSTC```
+
+
+## 7. Using the ZOWE Base Apps.
+
+The URL to open ZOWE from my browser is https://s0w1.dal-ebis.ihost.com:7554/zlux/ui/v1 where 
+* s0w1.dal-ebis.ihost.com is my hostname
+* 7554 is the port that ZOWE is configured to listen on
+
+Firing up the Apps should be self-explanatory. Screenshots below
+
+MVS Explorer
+![MVS](/images/MVS.JPG)
+
+JES Explorer
+![MVS](/images/JES.JPG)
+
+USS Explorer
+![USS](/images/USS.JPG)
+
+TN3270 Emulator
+![TN3270](/images/TN3270.JPG)
+
+
+
+## 8. Subsequent Upgrades.
+
+The scope of this worked example was limited to a simple deployment. However, anybody running ZOWE will want to know how to upgrade it and how to avoid downtime.
+
+The short answer is to do a fresh ZOWE install, and switch traffic when ready.
+
+This subject is addressed by the ZOWE documentation.
+
+[upgrade zowe with zero downtime](https://docs.zowe.org/stable/user-guide/api-mediation/upgrade-zowe-no-downtime/)
+
