@@ -22,7 +22,7 @@ A structured set of worked examples for using the zowe-based DB2 tooling, at the
 Deployment Worked Examples
 * [Deploying ZOWE](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_zowe.md)   
 * [Deploying Unified Management Server for z/OS and Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/deloying_ums_and_db2adminfoundation.md)
-* [Configuring SQL Tuning Services within Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/configure_sql_tuning.md)    
+* [Configuring SQL Tuning Services within Db2 Administration Foundation](https://github.com/zeditor01/using_zowe/blob/main/docs/configure_sql_tuning.md) Not yet written    
 * [Deploying Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2automationexperience.md) Not yet written
 * [Deploying Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/deploying_db2devopsexperience.md) Not yet written
 
