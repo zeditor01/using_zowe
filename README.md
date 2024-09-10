@@ -39,16 +39,35 @@ z/OSMF should support secure connections from a web browser, to allow the user t
 ![zowe_deploy01](/images/zowe_deploy01.JPG)
 
 ## Step 1 : Deploy ZOWE
-ZOWE uses z/OSMF services. It runs
+ZOWE uses z/OSMF services. It's installation service will create a new Keyring and certificates to allow secure commincations from browsers, and secure communications to consume z/OSMF services.
+
 ![zowe_deploy02](/images/zowe_deploy02.JPG)
 
 ## Step 2 : Deploy UMS
+UMS depends upon ZOWE as a pre-requisite. The Unified Management Service App runs in ZOWE and invokes services that are provided by Unified Management Server.
+
+UMS utilised the same keyring and certificates as ZOWE. It is secured using the RACF IZP class. It is strongly recommended to configure UMS to execute in SAFOnly mode, so that all access is controlled by the SAF (RACF in this worked example). 
+
+UMS is installed into ZOWE, so that when ZOWE starts, it automatically starts UMS.
+
 ![zowe_deploy02](/images/zowe_deploy03.JPG)
 
-## Step 3 : Deploy Db2 Admin Foundation
-![zowe_deploy02](/images/zowe_deploy04.JPG)
+## Step 3 : Deploy Db2 Administration Foundation
+Db2 Administration Foundation is a set of base services for Db2 tools running under ZOWE. It's services include
+* Catalog Navigation
+* Command Execution
+* SQL Exection
+* SQL Tuning
+* DDL Generation
+
+These base services are provided at no charge. Additional Experiences ($ licensed) will sit on top of Db2 Administration Foundation services, and add new capabilities to the stack.
+
+![zowe_deploy04](/images/zowe_deploy04.JPG)
 
 ## Step 4 : Deploy additional Db2 (and IMS) experiences
-![zowe_deploy02](/images/zowe_deploy05.JPG)
+
+Adding additional experiences to the stack will be done in a very similar way to deploying Db2 Administration Foundation.
+
+![zowe_deploy05](/images/zowe_deploy05.JPG)
 
 
