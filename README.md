@@ -31,7 +31,11 @@ Usage Worked Examples
 * [Using Db2 Automation Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2automationexperience.md) Not yet written
 * [Using Db2 Devops Experience](https://github.com/zeditor01/using_zowe/blob/main/docs/using_db2evopsexperience.md) Not yet written
 
-## Step 0 : Start with z/OSMF
+# The Sequence of Steps described in this Repository
+
+This github repository is an audit trail of the following journey:
+
+## Starting Point : z/OS system with z/OSMF
 The starting point on your ZOWE journey is a fully functional z/OSMF service. Most sites should have this up and running already, because it is the recommended vehicle for installing software from ShopZ.
 
 z/OSMF supports secure connections from a web browser, to allow the user to invoke a range of applications and services. The CA Certificate of z/OSMF must be imported into the Web Browsers trust store to enable secure connections.
