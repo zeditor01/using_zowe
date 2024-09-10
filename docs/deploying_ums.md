@@ -176,7 +176,7 @@ drwxr-xr-x   4 OMVSKERN OMVSGRP     8192 Sep 21  2023 zss-data-provider
 Check the UMS documentation for SMPE tasks [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=begin-performing-smpe-installation-tasks)
 
 
-### 2.3 Program COntrol Authorisation
+### 2.3 Program Control Authorisation
 
 UMS Zowe plug-ins require Program Control authorization. In order to tag the files with this bit, the SMP/E install user requires BPX.FILEATTR.PROGCTL permission on the system.
 
@@ -196,11 +196,11 @@ IBMUSER:/Z31A/usr/lpp/IBM/izp/v1r2m0/bin: >
 
 ## 3. Editing the ZWEYAML parmlib file
 
-Section 1
+As with ZOWE, the entire installation and configuration of UMS is controlled by a single YAML file. If you choose wisely at this point, the installation should flow smoothly.
 
-Section 2
+Editing the ZWEYAML file is performed as one step of the UMS installation in the next section. We will review the ZWEYAML file ahead of time, so that when we start the installation tasks we just follow a set of simple tasks.
 
-hint right click - open in new tab
+The actual parameters files that I used in this example and included within this github repository, links below. In addition to the ZWEYAML file
 
 [ZWEYAML here](https://github.com/zeditor01/using_zowe/blob/main/samples/ZWEYAML.TXT)
 
@@ -208,56 +208,7 @@ hint right click - open in new tab
 
 [IZPDAFPM here](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT)
 
-
-
-## 4. Installing the UMS instance.
-
-Invoking the Installer
-
-## 5. Configuring the UMS instance.
-
-Invoking the Configuration
-
-## 6. Operating UMS.
-
-PARMLIB
-
-Automated Operations
-
-## 7. Using the UMS Base Apps.
-
-JES Explorer
-
-Editor
-
-TN3270
-
-## 8. Subsequent Upgrades.
-
-Parallel ZOWE instances
-
-Upgrading a single ZOWE instance
-
-
-
 ```
-SMPE install UMS and DAF.
-
-/usr/lpp/IBM/izp/v1r2m0/bin
-/usr/lpp/IBM/afx/v1r2m0/bin
-
-
-Stop ZOWE
-Stop ZOWE Cross Memory Server
-    
-Copy SIZPSAMP to another data set of the same attributes IZP.CUST.SAMPLIB ( members  IZPALOPL,  IZPCPYML, IZPCPYM2, IZPGENER, IZPMIGRA )
-
-Edit and submit IZP.CUST.SAMPLIB(IZPALOPL) ... Allocates IZP.CUST.PARMLIB
-   
-Edit and submit IZP.CUST.SAMPLIB(IZPCPYML) ... Creates the ZWEYAML default PARMLIB member (to be edited).
-
-(Migration Only) IZPMIGRA Migrates current values from version 1.1 to version 1.2.
-
 Edit IZP.CUST.PARMLIB(ZWEYAML) 
 - experiences
 - useSAFOnly: true
@@ -275,9 +226,188 @@ Edit IZP.CUST.PARMLIB(ZWEYAML)
 - TLS, ports
 - HLQs & Libraries for UMS & DB2
 - dbaEncryption: "IZP.CUST.DBA.ENCRYPT"
+```
 
+## 4. Installing the UMS instance.
+
+```
+Stop ZOWE
+Stop ZOWE Cross Memory Server
+    
+Copy SIZPSAMP to another data set of the same attributes IZP.CUST.SAMPLIB ( members  IZPALOPL,  IZPCPYML, IZPCPYM2, IZPGENER, IZPMIGRA )
+
+Edit and submit IZP.CUST.SAMPLIB(IZPALOPL) ... Allocates IZP.CUST.PARMLIB
+   
+Edit and submit IZP.CUST.SAMPLIB(IZPCPYML) ... Creates the ZWEYAML default PARMLIB member (to be edited).
+
+(Migration Only) IZPMIGRA Migrates current values from version 1.1 to version 1.2.
+
+Edit IZP.CUST.PARMLIB(ZWEYAML) 
 
 IZP.CUST.SAMPLIB(IZPGENER) - generates IZP.CUST.JCLLIB
+```
+
+## 5. Configuring the UMS instance.
+
+Work your way thru the JCLs
+```
+IZPA1.... N/A - allocates TEAMLIST
+IZPA1V... verify  
+IZPA2.... N/A - allocates USERLIST    
+IZPA2V... verify    
+IZPA3.... YES - allocates IZP.CUST.DBA.ENCRYPT   
+IZPA3V... verify  
+IZPB0R... N/A - Create a new group for surrogate users. This is not required for useSAFOnly.  
+IZPB0VR.. verify  
+IZPB1R... YES - Create IZP class and add to the CDT.  
+IZPB1VR.. verify  
+IZPB2R... YES - Add security role profiles to the IZP class.   
+IZPB2VR.. verify  
+IZPB3R... N/A - Create generic profiles to secure userList and teamList data sets. This is not required if useSAFOnly=true.  
+IZPB3VR.. verify  
+IZPB4R... YES - Create RACF IZP resource profiles to define the UMS users and their roles.  
+IZPB4VR.. verify  
+IZPC1R... N/A - Add surrogate users to impersonate when accessing the userList and teamList data sets during runtime. This is not required if useSAFOnly=true.  
+IZPC1VR.. verify  
+IZPC2R... N/A - Grant surrogate user access to the userList and teamList profiles. This is not required if useSAFOnly=true.  
+IZPC2VR.. verify  
+IZPD1R... YES - Define CRYPTOZ resource profiles for the PKCS #11 token for UMS.   
+IZPD1VR.. verify  
+IZPD2R... N/A - Grant system programmer and started task access to PKCS #11 resources. 
+ >>> IZPD2R 	Grant system programmer and started task access to PKCS #11 resources. 
+ >>> This is not required if you are not using either a UMS default DBA user ID with a password (specified by the key components.izp.security.pkcs11.dbaUser) or a Db2 subsystem-specific DBA user ID with a password.
+ >>> Too many double negatives. just run the fucker, 'cos it can't do any harm. 
+ IZPD2VR.. verify  
+ >>> //* In the output of this job, make sure that the following is true:
+ >>> //*                                                                 
+ >>> //* ZWEADMIN has READ access to USER.IZPTOK.                                                 
+ >>> //* ZWEADMIN has CONTROL access to SO.IZPTOK.                                                   
+ >>> //* ZWESLSTC has UPDATE access to USER.IZPTOK........ ( ZWESVUSR )        
+ >>>                                          
+IZPD3R... N/A - Create the PKCS #11 token for UMS. This is not required if you are  
+ >>> Again - too many double negatives 	
+ >>> Just run the fucker. 
+IZPD3VR.. verify  
+IZPD4R... YES - Add a new user to serve as the DBA user ID.  
+IZPD4VR.. verify  
+IZPD5R... YES - Connect the DBA user ID to the IZUUSER group for z/OSMF.  
+IZPD5VR.. verify  
+IZPD6R... YES - Grant the DBA user ID access to applications. If useSAFOnly=true, permits are not required for the surrogate users.   
+IZPD6VR.. verify  
+IZPD7R... YES - Creates function profiles in IZP class that are used when useSafOnly is enabled, which allow users to refresh the security cache.   
+IZPD7VR.. verify  
+IZPSTEPL. YES - concatenate datasets in PROCLIB member
+IZPUSRMD. N/A - If useSafOnly is set to true or you are migrating from UMS 1.1, do not submit the IZPUSRMD JCL.
+izp-encrypt-dba.sh
+IZPIPLUG. YES - Install Zowe plugins using the zwe command.
+IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
+```
+
+## 6. Operating UMS.
+
+Just Start ZOWE
+
+Watch Startup
+
+Sample joblog
+
+
+## 7. Using the Unified Management Experience App
+
+Include Db2 subsystem register steps
+
+UMS01
+
+![ums01](/images/ums01.JPG)
+
+UMS02
+
+![ums02](/images/ums02.JPG)
+
+UMS03
+
+![ums03](/images/ums03.JPG)
+
+UMS04
+
+![ums04](/images/ums04.JPG)
+
+UMS05
+
+![ums05](/images/ums05.JPG)
+
+UMS06
+
+![ums06](/images/ums06.JPG)
+
+UMS07
+
+![ums07](/images/ums07.JPG)
+
+UMS08
+
+![ums08](/images/ums08.JPG)
+
+UMS09
+
+![ums09](/images/ums09.JPG)
+
+UMS10
+
+![ums10](/images/ums010.JPG)
+
+
+UMS11
+
+![ums11](/images/ums11.JPG)
+
+UMS12
+
+![ums12](/images/ums12.JPG)
+
+UMS13
+
+![ums13](/images/ums13.JPG)
+
+UMS14
+
+![ums14](/images/ums14.JPG)
+
+UMS15
+
+![ums15](/images/ums15.JPG)
+
+UMS16
+
+![ums16](/images/ums16.JPG)
+
+UMS17
+
+![ums17](/images/ums17.JPG)
+
+UMS18
+
+![ums18](/images/ums18.JPG)
+
+UMS19
+
+![ums19](/images/ums19.JPG)
+
+
+
+## 8. Subsequent Upgrades.
+
+[PTFS](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-installing-program-temporary-fix-ptf)
+
+[POST ZOWE Upgrades](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-post-zowe-upgrade-tasks-ums)
+
+[Post DB2 Upgrade](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-configuring-ums-after-upgrading-db2-zos)
+
+
+
+### Scratch Pad Area
+
+```
 
 
 https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server
