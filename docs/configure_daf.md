@@ -23,6 +23,8 @@ If you want to generate the DDL of an explored object, you must configure a Work
 3. While registering the subsystem, specify the name of the WLM in the Workload Manager environment field on the Configuration tab.
 
 
+### 1.1 Define the WLM PROC for ZOWE
+
 DBDGWLM1 was already defined, so I chose to call this PROC DBDGWLMZ
 
 Edited PROC for DBDGWLMZ as follows
@@ -47,6 +49,8 @@ Edited PROC for DBDGWLMZ as follows
 //*ADBDIAG  DD SYSOUT=*                                                  
 ```
 
+### 1.2 Create a WLM Environment for it
+
 Create a WLM Environment 
 ```
 **************************** Top of Data ******************************
@@ -65,11 +69,64 @@ Starting of server address spaces for a subsystem instance:
 *************************** Bottom of Data ****************************
 ```
 
+Start the WLM Environment from the console
+```
+/V WLM,APPLENV=DBDGENVZ,RESUME
+```
 
+```
+DBDGENVC
+DBDGENVD
+DBDGENVG
+DBDGENVJ
+DBDGENVM
+DBDGENVO
+DBDGENVP
+DBDGENVR
+DBDGENVU ... DBDGWLMU
+DBDGENVW
+DBDGENVX
+DBDGENVZ
+DBDGENV1
+```
+
+### 1.3 Modify the ZWEYAML to discover the tools
+
+Configure the storage tab as per the [docco](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=foundation-configuring-storage-tab)
+```
+toolsDiscovery:
+  enabled: true
+  discoverySearchPaths:
+  - "DSN:HLQ.SHLOSAMP(ADB131P)"
+```
+
+Configure the statistics tab as per the [docco](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=foundation-configuring-statistics-tab)
+```
+toolsDiscovery:
+  enabled: true
+  discoverySearchPaths:
+  - "DSN:HLQ.SADBSAMP(ADBDSCVP)"
+```
 
 
 ## 2. Configure SQL Tuning Services.
 
-Blah blah
+Configuring SQL Tuning Services requires that you follow two sets of instructions
+1. Setup the Tuning Services, as documented in the OQWT documentation [here](https://www.ibm.com/docs/en/dqwtfz/6.1?topic=installation-roadmaps)
+2. Configure the UMS PARMLIB member (IZPDB2PM) to use the tuning services, as documented in UMS [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-configuring-ums-sql-tuning-services-db2)
 
+```
+tuningHost
+    The address of the host where SQL Tuning Services is running.
+tuningPort
+    The port number that you must use when connecting to the host.
+tuningThroughHttps
+    The default and preferred value of this parameter is true. Set this value to false to enable the HTTP connection from Unified Management Server to the SQL Tuning Services server.
+tuningDb2SecurityMechanismId
+    The mechanism that you want to use for securing the connection to SQL Tuning Services. The default value of this parameter is 3.
+maxInMemorySize
+    This parameter is used to configure the response buffer size for SQL Tuning Services. Before configuring this value, consider the number of concurrent users and environments in your organization. The default value of this parameter is 10 MB.
+tuningApplicationId
+    The applname of the subsystem that is used to configure the repository database. This value must be consistent with the appl_id parameter set during the SQL Tuning Services configuration. This parameter is mandatory when MFA is enabled.
+```
 
