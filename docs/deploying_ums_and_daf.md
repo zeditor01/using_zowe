@@ -248,59 +248,46 @@ All other parameters in the YAML file were left to default.
 
 ### 3.2 Editing Notes for IZPDB2PM
 
+This PARMLIB member will need to be edited if we are deploying UMS and Db2 Admin Foundation on a system where Db2 Administration Tool **is** installed.
+
+* line 27 (IZP_DB2_IPL: IZPDB2IP) specifies the name of a proclib member to be created by the installation process
+* lines 32 - 49 - check the library names of ISPF
+* line 160 (IZP_DB2_USR_HLQ: IZP.CUST) the HLQ of the UMS instance
+* line 162 (IZP_DB2_USR_PREFIX: SIZP) is the Prefix used in teh datasets.
+* line 173 (IZP_DB2_ADB_HLQ: ADBD10) is the HLQ of the Db2 Administration Tool load libraries
+* line 176 (IZP_DB2_ADB_PREFIX: SADB) is the prefix used in thise load libraries
+
+
 ### 3.3 Editing Notes for IZPDAFPM
 
-Write Detailed notes on the reasons behind each of these choices
+This PARMLIB member will need to be edited if we are deploying UMS and Db2 Admin Foundation on a system where Db2 Administration Tool **is not** installed.
 
-* include DAF so there is something to test with UMS
-* useSAFOnly to fit with the strategic authentication method that will continue to be supported
-* credential management tokens - MFA ?
-* PASSWORD is the only option for DB2
-* profileQualifier has loads of ramifications for the IZP RACF Class & Generic Profiles
-* DBAUSER - create one & use encrypted PWD as a RACF token
-* Point to ZOWE keyring & certificates
-* etc etc
 
-```
-Edit IZP.CUST.PARMLIB(ZWEYAML) 
-- experiences
-- useSAFOnly: true
-- dba authentication PASSWORD
-- profileQualifier: S0W1 
-- dbaUser: IZPDBA
-- token: IZPTOK
-- truststore location: "////ZWESVUSR/ZoweKeyring"
-- keystore location: "////ZWESVUSR/ZoweKeyring" and alias: "zowes0w1"
-- profilePrefix:        
-  # Super Role        
-  super: IZP.SUPER    
-  # Administrator Role
-  admin: IZP.ADMIN    
-- TLS, ports
-- HLQs & Libraries for UMS & DB2
-- dbaEncryption: "IZP.CUST.DBA.ENCRYPT"
-```
 
 ## 4. Installing the UMS instance.
 
 The tasks below are my selection of tasks from [this](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server)
 
-```
+### 4.1 Stop ZOWE
+
 Stop ZOWE
 Stop ZOWE Cross Memory Server
-    
+
+### 4.2 Create an instance SAMPLIB PDS, and copy the base members into it     
 Copy SIZPSAMP to another data set of the same attributes IZP.CUST.SAMPLIB ( members  IZPALOPL,  IZPCPYML, IZPCPYM2, IZPGENER, IZPMIGRA )
+
+### 4.3 Create the instance PARMLIB
 
 Edit and submit IZP.CUST.SAMPLIB(IZPALOPL) ... Allocates IZP.CUST.PARMLIB
    
 Edit and submit IZP.CUST.SAMPLIB(IZPCPYML) ... Creates the ZWEYAML default PARMLIB member (to be edited).
 
-(Migration Only) IZPMIGRA Migrates current values from version 1.1 to version 1.2.
+### 4.4 Edit IZP.CUST.PARMLIB(ZWEYAML)
 
-Edit IZP.CUST.PARMLIB(ZWEYAML) 
+Follow the notes in section 3 above
 
-IZP.CUST.SAMPLIB(IZPGENER) - generates IZP.CUST.JCLLIB
-```
+Now
+
 
 ## 5. Configuring the UMS instance.
 
