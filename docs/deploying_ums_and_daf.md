@@ -374,45 +374,84 @@ IZPB4R Create RACF IZP resource profiles to define the UMS users and their roles
 
 
 ### 4.10 IZPD1R
-IZPD1R Create RACF IZP resource profiles to define the UMS users and their roles.   
+IZPD1R Define CRYPTOZ resource profiles for the PKCS #11 token for UMS. 
 * [IZPD1R](here)
 * [IZPD1RV](here) 
 
+### 4.11 IZPD2R
+IZPD2R Grant system programmer and started task access to PKCS #11 resources. 
+* [IZPD2R](here)
+* [IZPD2RV](here) 
 
-
-
-
-
-IZPD1R... YES - Define CRYPTOZ resource profiles for the PKCS #11 token for UMS.   
-IZPD1VR.. verify  
-IZPD2R... N/A - Grant system programmer and started task access to PKCS #11 resources. 
- >>> IZPD2R 	Grant system programmer and started task access to PKCS #11 resources. 
- >>> This is not required if you are not using either a UMS default DBA user ID with a password (specified by the key components.izp.security.pkcs11.dbaUser) or a Db2 subsystem-specific DBA user ID with a password.
- >>> Too many double negatives. just run the fucker, 'cos it can't do any harm. 
- IZPD2VR.. verify  
+```
  >>> //* In the output of this job, make sure that the following is true:
  >>> //*                                                                 
  >>> //* ZWEADMIN has READ access to USER.IZPTOK.                                                 
  >>> //* ZWEADMIN has CONTROL access to SO.IZPTOK.                                                   
  >>> //* ZWESLSTC has UPDATE access to USER.IZPTOK........ ( ZWESVUSR )        
- >>>                                          
-IZPD3R... N/A - Create the PKCS #11 token for UMS. This is not required if you are  
- >>> Again - too many double negatives 	
- >>> Just run the fucker. 
-IZPD3VR.. verify  
-IZPD4R... YES - Add a new user to serve as the DBA user ID.  
-IZPD4VR.. verify  
-IZPD5R... YES - Connect the DBA user ID to the IZUUSER group for z/OSMF.  
-IZPD5VR.. verify  
-IZPD6R... YES - Grant the DBA user ID access to applications. If useSAFOnly=true, permits are not required for the surrogate users.   
-IZPD6VR.. verify  
-IZPD7R... YES - Creates function profiles in IZP class that are used when useSafOnly is enabled, which allow users to refresh the security cache.   
-IZPD7VR.. verify  
-IZPSTEPL. YES - concatenate datasets in PROCLIB member
-IZPUSRMD. N/A - If useSafOnly is set to true or you are migrating from UMS 1.1, do not submit the IZPUSRMD JCL.
-izp-encrypt-dba.sh
-IZPIPLUG. YES - Install Zowe plugins using the zwe command.
-IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
+ >>>     
+```
+
+### 4.12 IZPD3R
+IZPD3R Create the PKCS #11 token for UMS. This is not required if you are  
+* [IZPD3R](here)
+* [IZPD3RV](here) 
+
+### 4.13 IZPD4R
+IZPD4R Add a new user to serve as the DBA user ID.  
+* [IZPD4R](here)
+* [IZPD4RV](here) 
+
+### 4.14 IZPD5R
+IZPD5R Connect the DBA user ID to the IZUUSER group for z/OSMF. 
+* [IZPD5R](here)
+* [IZPD5RV](here) 
+
+### 4.15 IZPD6R
+IZPD6R Grant the DBA user ID access to applications. If useSAFOnly=true, permits are not required for the surrogate users.  
+* [IZPD6R](here)
+* [IZPD6RV](here) 
+
+### 4.16 IZPD7R
+IZPD7R Creates function profiles in IZP class that are used when useSafOnly is enabled, which allow users to refresh the security cache.   
+* [IZPD7R](here)
+* [IZPD7RV](here) 
+
+### 4.17 IZPSTEPL
+IZPSTEPL concatenate datasets in PROCLIB member
+* [IZPSTEPL](here)
+
+Results
+```
+inline
+```
+
+### 4.18 izp-encrypt-dba.sh
+izp-encrypt-dba.sh encrypts IZPDBA user's password
+
+Results
+```
+inline
+```
+
+
+### 4.19 IZPIPLUG
+IZPIPLUG - Install Zowe plugins using the zwe command.
+
+Results
+```
+inline
+```
+
+
+### 4.20 IZPEXPIN
+IZPEXPIN - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
+
+Results
+```
+inline
+```
+
 
 
 ## 6. Operating UMS.
