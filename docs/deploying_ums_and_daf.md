@@ -290,25 +290,61 @@ Follow the notes in section 3 above
 
 Run IZP.CUST.SAMPLIB(IZPGENER). 
 
-This job will read all the parameters in the ZWEYAML file and generate a complete set of customised JCL jobs in IZP.CUST.JCLLIB that we will run to configure the UMS instance.
+This job will read all the parameters in the ZWEYAML file and generate a complete set of customised JCL jobs in IZP.CUST.JCLLIB that we will run to configure the UMS instance. These are the jobs that were generated, plus my comments on whether they need to be executed.
 
+**Notes** 
+1. Some of these jobs are there to support the old dataset-based authentication mechanism which will be removed from the product in the near future. Do not run any jobs that say "not required for useSAFOnly".
+2. Each action job (eg: IZB1R) is paired with a verify job (eg: IZB1VR). Running the verify job is strongly recommended
 
-## 5. Configuring the UMS instance.
-
-continuation of [this](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server)
-
-Some of these jobs do not need to be run. Specifically, many of the jobs are there to support the old dataset-based authentication mechanism which will be removed from the product in the near future. Read the notes carefully, and omit any jobs that say "not required for useSAFOnly".
-
-Note that each the jobs is paired with a second job
-
-### 5.2 
-Work your way thru the JCLs
 ```
 IZPA1.... N/A - allocates TEAMLIST
 IZPA1V... verify  
 IZPA2.... N/A - allocates USERLIST    
 IZPA2V... verify    
 IZPA3.... YES - allocates IZP.CUST.DBA.ENCRYPT   
+IZPA3V... verify  
+IZPB0R... N/A - Create a new group for surrogate users. This is not required for useSAFOnly.  
+IZPB0VR.. verify  
+IZPB1R... YES - Create IZP class and add to the CDT.  
+IZPB1VR.. verify  
+IZPB2R... YES - Add security role profiles to the IZP class.   
+IZPB2VR.. verify  
+IZPB3R... N/A - Create generic profiles to secure userList and teamList data sets. This is not required if useSAFOnly=true.  
+IZPB3VR.. verify  
+IZPB4R... YES - Create RACF IZP resource profiles to define the UMS users and their roles.  
+IZPB4VR.. verify  
+IZPC1R... N/A - Add surrogate users to impersonate when accessing the userList and teamList data sets during runtime. This is not required if useSAFOnly=true.  
+IZPC1VR.. verify  
+IZPC2R... N/A - Grant surrogate user access to the userList and teamList profiles. This is not required if useSAFOnly=true.  
+IZPC2VR.. verify  
+IZPD1R... YES - Define CRYPTOZ resource profiles for the PKCS #11 token for UMS.   
+IZPD1VR.. verify  
+IZPD2R... N/A - Grant system programmer and started task access to PKCS #11 resources. 
+IZPD2VR.. verify  
+IZPD3R... N/A - Create the PKCS #11 token for UMS. This is not required if you are  
+IZPD3VR.. verify  
+IZPD4R... YES - Add a new user to serve as the DBA user ID.  
+IZPD4VR.. verify  
+IZPD5R... YES - Connect the DBA user ID to the IZUUSER group for z/OSMF.  
+IZPD5VR.. verify  
+IZPD6R... YES - Grant the DBA user ID access to applications. If useSAFOnly=true, permits are not required for the surrogate users.   
+IZPD6VR.. verify  
+IZPD7R... YES - Creates function profiles in IZP class that are used when useSafOnly is enabled, which allow users to refresh the security cache.   
+IZPD7VR.. verify  
+IZPSTEPL. YES - concatenate datasets in PROCLIB member
+IZPUSRMD. N/A - If useSafOnly is set to true or you are migrating from UMS 1.1, do not submit the IZPUSRMD JCL.
+izp-encrypt-dba.sh
+IZPIPLUG. YES - Install Zowe plugins using the zwe command.
+IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
+```
+Note that each the jobs is paired with a second job
+
+### 4.6 IZPA3
+IZPA3 allocates IZP.CUST.DBA.ENCRYPT which is used to store the encrypted password that the DBA user uses to connect to Db2 z/OS.
+* [IZPA3](here)
+* [IZPA3V](here)
+
+
 IZPA3V... verify  
 IZPB0R... N/A - Create a new group for surrogate users. This is not required for useSAFOnly.  
 IZPB0VR.. verify  
@@ -354,7 +390,7 @@ IZPUSRMD. N/A - If useSafOnly is set to true or you are migrating from UMS 1.1, 
 izp-encrypt-dba.sh
 IZPIPLUG. YES - Install Zowe plugins using the zwe command.
 IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
-```
+
 
 ## 6. Operating UMS.
 
