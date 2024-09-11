@@ -209,6 +209,8 @@ The actual parameters files that I used in this example and included within this
 
 [IZPDAFPM](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPDAFPM.TXT) ... right mouse click to open in new tab.
 
+The editing is performed part way through the installation and customisation sequence in sections 4 and 5 of this paper. There is no point starting those tasks until you know the the parameters that you will use to define your UMS instance. Hence, we will decide how to edit these files before we start running any installation and customisation jobs.
+
 
 ### 3.1 Editing Notes for ZWEYAML
 
