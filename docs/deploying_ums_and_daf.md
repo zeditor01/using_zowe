@@ -337,29 +337,52 @@ izp-encrypt-dba.sh
 IZPIPLUG. YES - Install Zowe plugins using the zwe command.
 IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
 ```
-Note that each the jobs is paired with a second job
+
 
 ### 4.6 IZPA3
 IZPA3 allocates IZP.CUST.DBA.ENCRYPT which is used to store the encrypted password that the DBA user uses to connect to Db2 z/OS.
 * [IZPA3](here)
 * [IZPA3V](here)
 
+### 4.7 IZPB1R
+IZPB1R creates the IZP RACF Class and adds it to the CDT.
 
-IZPA3V... verify  
-IZPB0R... N/A - Create a new group for surrogate users. This is not required for useSAFOnly.  
-IZPB0VR.. verify  
-IZPB1R... YES - Create IZP class and add to the CDT.  
-IZPB1VR.. verify  
-IZPB2R... YES - Add security role profiles to the IZP class.   
-IZPB2VR.. verify  
-IZPB3R... N/A - Create generic profiles to secure userList and teamList data sets. This is not required if useSAFOnly=true.  
-IZPB3VR.. verify  
-IZPB4R... YES - Create RACF IZP resource profiles to define the UMS users and their roles.  
-IZPB4VR.. verify  
-IZPC1R... N/A - Add surrogate users to impersonate when accessing the userList and teamList data sets during runtime. This is not required if useSAFOnly=true.  
-IZPC1VR.. verify  
-IZPC2R... N/A - Grant surrogate user access to the userList and teamList profiles. This is not required if useSAFOnly=true.  
-IZPC2VR.. verify  
+This job ended with errors for me, because
+1. I am using z/OS V3.1
+2. In z/OS V3.1 the RACF Class Definition Table comes with an IBM-supplied CDT entry for IZP (it's already there)
+3. The IBM-supplied CDT entry does not support generic profiles (and by specifying profileQualifier:S0W1 in ZWEYAML I am requiring generic profiles)
+
+The result was that the RDEF failed because the class already existed, and the RALTER commands were not run.
+* [IZPB1R](here)
+* [IZPB1VR](here)
+
+So, I adapted the IZPB1R job to ensure the desired result.
+* [FIXB1R](here)
+* [FIXB1VR](here)
+
+
+### 4.8 IZPB2R
+IZPB2R Add security role profiles to the IZP class.  
+* [IZPB2R](here)
+* [IZPB2RV](here) 
+
+
+### 4.9 IZPB4R
+IZPB4R Create RACF IZP resource profiles to define the UMS users and their roles.   
+* [IZPB4R](here)
+* [IZPB4RV](here) 
+
+
+### 4.10 IZPD1R
+IZPD1R Create RACF IZP resource profiles to define the UMS users and their roles.   
+* [IZPD1R](here)
+* [IZPD1RV](here) 
+
+
+
+
+
+
 IZPD1R... YES - Define CRYPTOZ resource profiles for the PKCS #11 token for UMS.   
 IZPD1VR.. verify  
 IZPD2R... N/A - Grant system programmer and started task access to PKCS #11 resources. 
