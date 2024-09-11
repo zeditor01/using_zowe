@@ -27,24 +27,42 @@ DBDGWLM1 was already defined, so I chose to call this PROC DBDGWLMZ
 
 Edited PROC for DBDGWLMZ as follows
 ```
-//ADBWLMP  PROC APPLENV=DBDGWLMZ,                                       
-//    DB2SSN=DBDG,NUMTCB=8                                              
-//IEFPROC EXEC PGM=DSNX9WLM,REGION=0M,TIME=NOLIMIT,                     
-//        PARM='&DB2SSN,&NUMTCB,&APPLENV'                               
-//STEPLIB  DD DISP=SHR,DSN=ADBD10.SADBLLIB                              
-//         DD DISP=SHR,DSN=DSND10.DGDG.RUNLIB.LOAD       DB2 RUNLIB     
-//         DD DISP=SHR,DSN=DSND10.SDSNLOAD          DB2 SDSNLOAD        
-//         DD DISP=SHR,DSN=DSND10.SDSNLOD2          DB2 SDSNLOD2        
-//         DD DISP=SHR,DSN=CEE.SCEERUN             LANGUAGE ENVIRONMENT 
-//UTPRINT  DD SYSOUT=*                                                  
-//RNPRIN01 DD SYSOUT=*                                                  
-//DSSPRINT DD SYSOUT=*                                                  
-//SYSIN    DD UNIT=SYSDA,SPACE=(4000,(20,20),,,ROUND)                   
-//SYSPRINT DD SYSOUT=*                                                  
-//SYSOUT   DD SYSOUT=*                                                  
-//CEEDUMP  DD SYSOUT=*                                                  
-//*ADBMSGS  DD SYSOUT=*                                                 
-//*ADBDIAG  DD SYSOUT=*                                                 
+//DBDGWLMZ PROC APPLENV=DBDGWLMZ,                                        
+//    DB2SSN=DBDG,NUMTCB=8                                               
+//IEFPROC EXEC PGM=DSNX9WLM,REGION=0M,TIME=NOLIMIT,                      
+//        PARM='&DB2SSN,&NUMTCB,&APPLENV'                                
+//STEPLIB  DD DISP=SHR,DSN=ADBD10.SADBLLIB                               
+//         DD DISP=SHR,DSN=DSND10.DGDG.RUNLIB.LOAD       DB2 RUNLIB      
+//         DD DISP=SHR,DSN=DSND10.SDSNLOAD          DB2 SDSNLOAD         
+//         DD DISP=SHR,DSN=DSND10.SDSNLOD2          DB2 SDSNLOD2         
+//         DD DISP=SHR,DSN=CEE.SCEERUN             LANGUAGE ENVIRONMENT  
+//UTPRINT  DD SYSOUT=*                                                   
+//RNPRIN01 DD SYSOUT=*                                                   
+//DSSPRINT DD SYSOUT=*                                                   
+//SYSIN    DD UNIT=SYSDA,SPACE=(4000,(20,20),,,ROUND)                    
+//SYSPRINT DD SYSOUT=*                                                   
+//SYSOUT   DD SYSOUT=*                                                   
+//CEEDUMP  DD SYSOUT=*                                                   
+//*ADBMSGS  DD SYSOUT=*                                                  
+//*ADBDIAG  DD SYSOUT=*                                                  
+```
+
+Create a WLM Environment 
+```
+**************************** Top of Data ******************************
+                                                                       
+Appl Environment Name . . DBDGENVZ                                     
+Description . . . . . . . ZOWE_ENVIRONMENT                             
+Subsystem type  . . . . . DB2                                          
+Procedure name  . . . . . DBDGWLMZ                                     
+Start parameters  . . . . DB2SSN=&IWMSSNM,APPLENV='DBDGENVZ'           
+                                                                       
+                                                                       
+                                                                       
+Starting of server address spaces for a subsystem instance:            
+ Managed by WLM                                                        
+                                                                       
+*************************** Bottom of Data ****************************
 ```
 
 
