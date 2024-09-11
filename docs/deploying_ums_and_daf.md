@@ -71,21 +71,8 @@ Data Set Names / Objects                       Volume
 'IZP.AIZPPAX'                                  A3USR2
 'IZP.AIZPREXX'                                 A3USR2
 'IZP.AIZPSAMP'                                 A3USR4
-'IZP.CPAC.DB2.PARMLIB'                         A3USR4
-'IZP.CPAC.PDFPD'                               A3USR7
-'IZP.CPAC.PROD.PDF'                            A3USR2
-'IZP.CPAC.PROPVAR'                             A3USR2
-'IZP.CPAC.SCPPCENU'                            A3USR7
-'IZP.CPAC.SCPPLOAD'                            A3USR6
-'IZP.CPAC.WORKFLOW'                            A3USR6
-'IZP.CPACDB2.DOCLIB'                           A3USR2
-'IZP.CPACDB2.SAMPLIB'                          A3USR6
-'IZP.DBA.ENCRYPT'                              A3USR2
-'IZP.ENVIRON'                                  A3USR5
-'IZP.JCLLIB'                                   A3USR3
 'IZP.OMVS.SIZPROOT'                                  
 'IZP.OMVS.SIZPROOT.DATA'                       A3USR5
-'IZP.PARMLIB'                                  A3USR2
 'IZP.SAFXDBRM'                                 A3USR2
 'IZP.SAFXLLIB'                                 A3USR6
 'IZP.SAFXSAMP'                                 A3USR7
@@ -99,28 +86,6 @@ Data Set Names / Objects                       Volume
 'IZP.SIZPPARM'                                 A3USR3
 'IZP.SIZPREXX'                                 A3USR8
 'IZP.SIZPSAMP'                                 A3USR3
-'IZP.SMPE.DB2.DLIB.CSI'                              
-'IZP.SMPE.DB2.DLIB.CSI.DATA'                   A3USR6
-'IZP.SMPE.DB2.DLIB.CSI.INDEX'                  A3USR6
-'IZP.SMPE.DB2.GLOBAL.CSI'                            
-'IZP.SMPE.DB2.GLOBAL.CSI.DATA'                 A3USR6
-'IZP.SMPE.DB2.GLOBAL.CSI.INDEX'                A3USR6
-'IZP.SMPE.DB2.SMPGLOG'                         A3USR4
-'IZP.SMPE.DB2.SMPGLOGA'                        A3USR8
-'IZP.SMPE.DB2.SMPPTS'                          A3USR4
-'IZP.SMPE.DB2.TARGET.CSI'                            
-'IZP.SMPE.DB2.TARGET.CSI.DATA'                 A3USR2
-'IZP.SMPE.DB2.TARGET.CSI.INDEX'                A3USR2
-'IZP.SMPE.DB2D300.SMPDLOG'                     A3USR3
-'IZP.SMPE.DB2D300.SMPDLOGA'                    A3USR5
-'IZP.SMPE.DB2T300.SMPMTS'                      A3USR7
-'IZP.SMPE.DB2T300.SMPSCDS'                     A3USR2
-'IZP.SMPE.DB2T300.SMPSTS'                      A3USR6
-'IZP.SMPE.DB2T300.SMPTLOG'                     A3USR3
-'IZP.SMPE.DB2T300.SMPTLOGA'                    A3USR4
-'IZP.TEAMLIST'                                 A3USR8
-'IZP.USERLIST'                                 A3USR7
-'IZP.USERLIST'                                 A3USR7 
 ```
 
 ### 2.2 USS filesystem mounted for UMS
@@ -180,38 +145,10 @@ The PSI installation is outside the scope of this document. I performed a standa
 'AFX.AAFXBASE'                                 A3USR2
 'AFX.AAFXBIN'                                  A3USR7
 'AFX.AAFXSAMP'                                 A3USR3
-'AFX.CPAC.DB2.PARMLIB'                         A3USR6
-'AFX.CPAC.PDFPD'                               A3USR8
-'AFX.CPAC.PROD.PDF'                            A3USR6
-'AFX.CPAC.PROPVAR'                             A3USR5
-'AFX.CPAC.SCPPCENU'                            A3USR6
-'AFX.CPAC.SCPPLOAD'                            A3USR4
-'AFX.CPAC.WORKFLOW'                            A3USR8
-'AFX.CPACDB2.DOCLIB'                           A3USR2
-'AFX.CPACDB2.SAMPLIB'                          A3USR5
 'AFX.OMVS.SAFXROOT'                                  
 'AFX.OMVS.SAFXROOT.DATA'                       A3USR8
 'AFX.SAFXBASE'                                 A3USR8
 'AFX.SAFXSAMP'                                 A3USR2
-'AFX.SMPE.DB2.DLIB.CSI'                              
-'AFX.SMPE.DB2.DLIB.CSI.DATA'                   A3USR5
-'AFX.SMPE.DB2.DLIB.CSI.INDEX'                  A3USR5
-'AFX.SMPE.DB2.GLOBAL.CSI'                            
-'AFX.SMPE.DB2.GLOBAL.CSI.DATA'                 A3USR5
-'AFX.SMPE.DB2.GLOBAL.CSI.INDEX'                A3USR5
-'AFX.SMPE.DB2.SMPGLOG'                         A3USR6
-'AFX.SMPE.DB2.SMPGLOGA'                        A3USR5
-'AFX.SMPE.DB2.SMPPTS'                          A3USR8
-'AFX.SMPE.DB2.TARGET.CSI'                            
-'AFX.SMPE.DB2.TARGET.CSI.DATA'                 A3USR7
-'AFX.SMPE.DB2.TARGET.CSI.INDEX'                A3USR7
-'AFX.SMPE.DB2D300.SMPDLOG'                     A3USR8
-'AFX.SMPE.DB2D300.SMPDLOGA'                    A3USR3
-'AFX.SMPE.DB2T300.SMPMTS'                      A3USR8
-'AFX.SMPE.DB2T300.SMPSCDS'                     A3USR5
-'AFX.SMPE.DB2T300.SMPSTS'                      A3USR6
-'AFX.SMPE.DB2T300.SMPTLOG'                     A3USR7
-'AFX.SMPE.DB2T300.SMPTLOGA'                    A3USR8
 ```
 
 ### 2.2 USS filesystem mounted for UMS
@@ -275,12 +212,37 @@ The actual parameters files that I used in this example and included within this
 
 ### 3.1 Editing Notes for ZWEYAML
 
-* The purpose of the the IZP.CUST.PARMLIB(ZWEYAML) file is to define all the parameters that are needed to integrate with the existing ZOWE instance, conform to RACF security requirements, and make secure connections to Db2 z/OS.
-* ZWEYAML is used as input to the IZPGENER job that creates all the customization JCLs to deploy UMS.
-* ZWEYAML is also used at runtime for integrated operations with ZOWE.
+The purpose of the the IZP.CUST.PARMLIB(ZWEYAML) file is to define all the parameters that are needed to integrate with the existing ZOWE instance, conform to RACF security requirements, and make secure connections to Db2 z/OS. ZWEYAML is used as input to the IZPGENER job that creates all the customization JCLs to deploy UMS. ZWEYAML is also used at runtime for integrated operations with ZOWE.
+
 * line 13 (enabled:) allows you to disable/enable UMS when ZOWE starts up.
 * lines 27 & 28 (experiences:) allows you to provide the USS path to executables of any experiences to be included. In the first case I am installing the Db2 Administration Foundation at the same time as UMS.
-* line
+* line 33 (Jobcard:) allows you to provide a jobcard for all the customisation jobs that will be generated
+* line 42 (runtimeDirectory:) should identify where the ZFS for UMS is mounted.
+* line 50 (workspaceDirectory:) is a USS path that UMS can use for temporary runtime datasets.
+* line 66 (useSAFOnly: true) is critically important, to define that all authentication is performed by your SAF (RACF)
+* line 80 (defaultAuthenticationMechanism: PASSWORD) is the only valid option for the DBA userid for Db2 z/OS
+* line 109 (profileQualifier: S0W1) is optional if you wish to use generic RACF profiles. Be cautious about z/OS V3.1 changes to the IBM-supplied definition of IZP in the Class Definition Table. (more later)
+* line 117 (dbaUser: IZPDBA) defines the name of the DBA user that UMS will use to interact with Db2 z/OS.
+* line 121 (token: IZPTOK) defines the name of the token that will be used for the pkcs#11 encrypted password
+* line 125 (library: "/usr/lpp/pkcs11/lib/csnpca64.so") is the library location for the pkcs#11 provider module
+* line 151 (location: "////ZWESVUSR/ZoweKeyring") defines the ZOWE keyring to be used as the truststore
+* line 159 (type: "JCERACFKS") is the truststore type
+* line 170 (location: "////ZWESVUSR/ZoweKeyring") defines the ZOWE keyring to be used as the keystore
+* line 178 (type: "JCERACFKS") is the keystore type
+* line 182 (alias: "zowes0w1") is the alias of the zowe certificate
+* line 189 (super: IZP.SUPER) is the profile name for the Super Role for the IZP RACF class
+* line 191 (admin: IZP.ADMIN) is the profile name for the Admin Role for the IZP RACF class
+* line 221 (tlsVersionList: TLSv1.2,TLSv1.3) are the TLS encryptions standards to be supported
+* line 228 (authType: STANDARD_JWT) is the type of Java Web Tokens to be used for authentication. In this simple example we will use standard JWT tokens managed by zowe. You could get more adventurous and support tokens with Multi Factor Authentication.
+* lines 230 - 235 : the ports that UMS listens on. Let these default unless you have a clash.
+* line 300 (runtimeHlq: "IZP") is the HLQ of the UMS load libraries from the SMPE installation.
+* line 305 (hlq: "IZP.CUST") is the HLQ of the specific UMS instance to be created.
+* line 310 (parmlib: "IZP.CUST.PARMLIB") is the specific dataset where the PARMLIB members are to be stored. All instance-specific datasets will be stored under the instance HLQ.
+* line 315 (jcllib: "IZP.CUST.JCLLIB") is the specific dataset where the PARMLIB members are to be stored. All instance-specific datasets will be stored under the instance HLQ.
+* lines 319 - 320 (loadLibrary:) points to the Db2 Load libraries
+* line 331 (dbaEncryption: "IZP.CUST.DBA.ENCRYPT") defines the dataset where the encrypted password will be stored for the DBA user. All instance-specific datasets will be stored under the instance HLQ.
+
+All other parameters in the YAML file were left to default.
 
 ### 3.2 Editing Notes for IZPDB2PM
 
