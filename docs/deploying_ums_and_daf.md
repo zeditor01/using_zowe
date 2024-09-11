@@ -286,13 +286,22 @@ Edit and submit IZP.CUST.SAMPLIB(IZPCPYML) ... Creates the ZWEYAML default PARML
 
 Follow the notes in section 3 above
 
-Now
+### 4.5 Run the IZPGENER Job
+
+Run IZP.CUST.SAMPLIB(IZPGENER). 
+
+This job will read all the parameters in the ZWEYAML file and generate a complete set of customised JCL jobs in IZP.CUST.JCLLIB that we will run to configure the UMS instance.
 
 
 ## 5. Configuring the UMS instance.
 
 continuation of [this](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=ums-step-2-installing-unified-management-server)
 
+Some of these jobs do not need to be run. Specifically, many of the jobs are there to support the old dataset-based authentication mechanism which will be removed from the product in the near future. Read the notes carefully, and omit any jobs that say "not required for useSAFOnly".
+
+Note that each the jobs is paired with a second job
+
+### 5.2 
 Work your way thru the JCLs
 ```
 IZPA1.... N/A - allocates TEAMLIST
