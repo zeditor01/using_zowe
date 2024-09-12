@@ -27,26 +27,26 @@ If you want to generate the DDL of an explored object, you must configure a Work
 
 DBDGWLM1 was already defined, so I chose to call this PROC DBDGWLMZ
 
-Edited PROC for DBDGWLMZ as follows
+Edited PROC for DBDGWLMZ as follows, and copied it to ADCD.Z31A.PROCLIB where all the other DB2 WLM Procs reside.
 ```
-//DBDGWLMZ PROC APPLENV=DBDGWLMZ,                                        
-//    DB2SSN=DBDG,NUMTCB=8                                               
-//IEFPROC EXEC PGM=DSNX9WLM,REGION=0M,TIME=NOLIMIT,                      
-//        PARM='&DB2SSN,&NUMTCB,&APPLENV'                                
-//STEPLIB  DD DISP=SHR,DSN=ADBD10.SADBLLIB                               
-//         DD DISP=SHR,DSN=DSND10.DGDG.RUNLIB.LOAD       DB2 RUNLIB      
-//         DD DISP=SHR,DSN=DSND10.SDSNLOAD          DB2 SDSNLOAD         
-//         DD DISP=SHR,DSN=DSND10.SDSNLOD2          DB2 SDSNLOD2         
-//         DD DISP=SHR,DSN=CEE.SCEERUN             LANGUAGE ENVIRONMENT  
-//UTPRINT  DD SYSOUT=*                                                   
-//RNPRIN01 DD SYSOUT=*                                                   
-//DSSPRINT DD SYSOUT=*                                                   
-//SYSIN    DD UNIT=SYSDA,SPACE=(4000,(20,20),,,ROUND)                    
-//SYSPRINT DD SYSOUT=*                                                   
-//SYSOUT   DD SYSOUT=*                                                   
-//CEEDUMP  DD SYSOUT=*                                                   
-//*ADBMSGS  DD SYSOUT=*                                                  
-//*ADBDIAG  DD SYSOUT=*                                                  
+//DBDGWLMZ PROC APPLENV=DBDGENVZ,                                         
+//    DB2SSN=DBDG,NUMTCB=8                                                
+//IEFPROC EXEC PGM=DSNX9WLM,REGION=0M,TIME=NOLIMIT,                       
+//        PARM='&DB2SSN,&NUMTCB,&APPLENV'                                 
+//STEPLIB  DD DISP=SHR,DSN=ADBD10.SADBLLIB                                
+//         DD DISP=SHR,DSN=DSND10.DGDG.RUNLIB.LOAD       DB2 RUNLIB       
+//         DD DISP=SHR,DSN=DSND10.SDSNLOAD          DB2 SDSNLOAD          
+//         DD DISP=SHR,DSN=DSND10.SDSNLOD2          DB2 SDSNLOD2          
+//         DD DISP=SHR,DSN=CEE.SCEERUN             LANGUAGE ENVIRONMENT   
+//UTPRINT  DD SYSOUT=*                                                    
+//RNPRIN01 DD SYSOUT=*                                                    
+//DSSPRINT DD SYSOUT=*                                                    
+//SYSIN    DD UNIT=SYSDA,SPACE=(4000,(20,20),,,ROUND)                     
+//SYSPRINT DD SYSOUT=*                                                    
+//SYSOUT   DD SYSOUT=*                                                    
+//CEEDUMP  DD SYSOUT=*                                                    
+//*ADBMSGS  DD SYSOUT=*                                                   
+//*ADBDIAG  DD SYSOUT=*                                                            
 ```
 
 ### 1.2 Create a WLM Environment for it
@@ -69,26 +69,29 @@ Starting of server address spaces for a subsystem instance:
 *************************** Bottom of Data ****************************
 ```
 
-Start the WLM Environment from the console
+Install the modified WLM service definition, by selecting the "install" option when exiting from WLM editing ISPF panels.
+
+Then activate the WLM policy that includes this new service definition.
+```
+VARY WLM, POLICY=ETPBASE
+```
+
+And finally, activate the APPLENV and veify that it is available.
 ```
 /V WLM,APPLENV=DBDGENVZ,RESUME
 ```
 
+followed by
+
 ```
-DBDGENVC
-DBDGENVD
-DBDGENVG
-DBDGENVJ
-DBDGENVM
-DBDGENVO
-DBDGENVP
-DBDGENVR
-DBDGENVU ... DBDGWLMU
-DBDGENVW
-DBDGENVX
-DBDGENVZ
-DBDGENV1
+D WLM,APPLENV=DBDGENVZ                                  
+IWM029I  06.21.27  WLM DISPLAY 481                      
+  APPLICATION ENVIRONMENT NAME     STATE     STATE DATA 
+  DBDGENVZ                         AVAILABLE            
+  ATTRIBUTES: PROC=DBDGWLMZ SUBSYSTEM TYPE: DB2         
 ```
+
+
 
 ### 1.3 Modify the ZWEYAML to discover the tools
 
