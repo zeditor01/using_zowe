@@ -95,12 +95,12 @@ IWM029I  06.21.27  WLM DISPLAY 481
 
 ### 1.3 Modify the ZWEYAML to discover the tools
 
-Configure the storage tab as per the [docco](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=foundation-configuring-storage-tab)
+You may need to apply a PTF to provide tools discovery capability to Db2 Administration Tool [APAR PH55177](https://www.ibm.com/docs/en/db2admintool/13.1?topic=tool-enabling-product-discovery).
 ```
 toolsDiscovery:
   enabled: true
   discoverySearchPaths:
-  - "DSN:HLQ.SHLOSAMP(ADB131P)"
+  - "DSN:ADBD10.SHLOSAMP(ADB131P)"
 ```
 
 Configure the statistics tab as per the [docco](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=foundation-configuring-statistics-tab)
