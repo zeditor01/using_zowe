@@ -341,8 +341,8 @@ IZPEXPIN. YES - LAUNCH THE IZP EXPERIENCE INTEGRATION SCRIPT
 
 ### 4.6 IZPA3
 IZPA3 allocates IZP.CUST.DBA.ENCRYPT which is used to store the encrypted password that the DBA user uses to connect to Db2 z/OS.
-* [IZPA3](here)
-* [IZPA3V](here)
+* [IZPA3](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPA3.TXT)
+* [IZPA3V output](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPA3V.TXT)
 
 ### 4.7 IZPB1R
 IZPB1R creates the IZP RACF Class and adds it to the CDT.
