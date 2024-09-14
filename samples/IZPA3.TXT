@@ -1,0 +1,28 @@
+//IZPCUST1 JOB (FB3),'UMSCUST',CLASS=A,MSGCLASS=H,                              
+//       NOTIFY=&SYSUID,REGION=0M,TIME=1440                                     
+//*                                                                             
+//*--------------------------------------------------------------------*        
+//*                                                                    *        
+//*IBM*                                                                *        
+//*ROCKET***                                                           *        
+//*LICENSED MATERIALS - PROPERTY OF IBM                                *        
+//*5698-UM1                                                            *        
+//*(C) COPYRIGHT IBM CORP. 2018 - 2023 All Rights Reserved.            *        
+//*(C) COPYRIGHT ROCKET SOFTWARE, INC. 2018 - 2023 All Rights Reserved.*        
+//* *TRADEMARK OF INTERNATIONAL BUSINESS MACHINES.                     *        
+//* **TRADEMARK OF ROCKET SOFTWARE, INC.                               *        
+//*                                                                    *        
+//*--------------------------------------------------------------------*        
+//*                                                                             
+//* Customized By: IBMUSER                                                      
+//* Customized On: 9-Sep-2024                                                   
+//* Customized At: 15:32:49                                                     
+//*                                                                             
+//* Allocate sequential (flat) dataset for dbaEncryption.                       
+//*                                                                             
+//IZPA3    EXEC PGM=IEFBR14                                                     
+//ALLOC    DD   DSN=IZP.CUST.DBA.ENCRYPT,                                       
+//         DISP=(NEW,CATLG),                                                    
+//         UNIT=SYSALLDA,                                                       
+//         SPACE=(TRK,(20,5)),                                                  
+//         DCB=(DSORG=PS,RECFM=FB,LRECL=80,BLKSIZE=0)                           
