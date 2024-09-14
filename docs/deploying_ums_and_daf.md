@@ -347,19 +347,27 @@ IZPA3 allocates IZP.CUST.DBA.ENCRYPT which is used to store the encrypted passwo
 
 ### 4.7 IZPB1R
 IZPB1R creates the IZP RACF Class and adds it to the CDT.
-
+* [IZPB1R](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPB1R.TXT)
+  
 This job ended with errors for me, because
 1. I am using z/OS V3.1
 2. In z/OS V3.1 the RACF Class Definition Table comes with an IBM-supplied CDT entry for IZP (it's already there)
-3. The IBM-supplied CDT entry does not support generic profiles (and by specifying profileQualifier:S0W1 in ZWEYAML I am requiring generic profiles)
 
-The result was that the RDEF failed because the class already existed, and the RALTER commands were not run.
-* [IZPB1R](here)
-* [IZPB1VR](here)
+```
+READY                                       
+RDEF CDT IZP UACC(NONE)                     
+ICH10102I IZP ALREADY DEFINED TO CLASS CDT. 
+```
 
-So, I adapted the IZPB1R job to ensure the desired result.
-* [FIXB1R](here)
-* [FIXB1VR](here)
+If I had assumed it was OK to continue because the class already exists, I would be wrong, because 
+1. IZPB1R makes changes to the IZP class definition that are necessary to support RACF generic profiles.
+2. The IBM-supplied CDT entry does not support generic profiles
+3. By specifying profileQualifier:S0W1 in ZWEYAML I am requiring generic profiles
+4. IZPGENER generated jobs that perform RACF PERMITs against generic profiles rather than discrete profiles
+
+
+So, I edited the IZPB1R job to remove the RDEF command, so that all the subsequent RALT commands were executed, and the IBM-supplied IZP class definition is changed to support generic profiles.
+
 
 
 ### 4.8 IZPB2R
