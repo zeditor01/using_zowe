@@ -344,6 +344,7 @@ IZPA3 allocates IZP.CUST.DBA.ENCRYPT which is used to store the encrypted passwo
 * [IZPA3](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPA3.TXT)
 * [IZPA3V output](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPA3V.TXT)
 
+
 ### 4.7 IZPB1R
 IZPB1R creates the IZP RACF Class and adds it to the CDT.
 
