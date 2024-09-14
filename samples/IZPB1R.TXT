@@ -1,0 +1,36 @@
+//IZPCUST1 JOB (FB3),'UMSCUST',CLASS=A,MSGCLASS=H,                      
+//       NOTIFY=&SYSUID,REGION=0M,TIME=1440                             
+//*                                                                     
+//*--------------------------------------------------------------------*
+//*                                                                    *
+//*IBM*                                                                *
+//*ROCKET***                                                           *
+//*LICENSED MATERIALS - PROPERTY OF IBM                                *
+//*5698-UM1                                                            *
+//*(C) COPYRIGHT IBM CORP. 2018 - 2023 All Rights Reserved.            *
+//*(C) COPYRIGHT ROCKET SOFTWARE, INC. 2018 - 2023 All Rights Reserved.*
+//* *TRADEMARK OF INTERNATIONAL BUSINESS MACHINES.                     *
+//* **TRADEMARK OF ROCKET SOFTWARE, INC.                               *
+//*                                                                    *
+//*--------------------------------------------------------------------*
+//*                                                                     
+//* Customized By: IBMUSER                                              
+//* Customized On: 9-Sep-2024                                           
+//* Customized At: 15:32:49                                             
+//*                                                                     
+//* Create IZP class and add to the                                     
+//* CDT.                                                                
+//*                                                                     
+//IZPB1    EXEC PGM=IKJEFT1A                                            
+//SYSTSPRT DD   SYSOUT=*                                                
+//SYSTSIN  DD   DDNAME=RUNCMD                                           
+//RUNCMD   DD   *,DLM=$$                                                
+RDEF CDT IZP UACC(NONE)                                                 
+RALT CDT IZP CDTINFO(POSIT(608))                                        
+RALT CDT IZP CDTINFO(RACLIST(ALLOWED))                                  
+RALT CDT IZP CDTINFO(MAXLENGTH(246))                                    
+RALT CDT IZP CDTINFO(FIRST(ALPHA))                                      
+RALT CDT IZP CDTINFO(OTHER(ALPHA NUMERIC SPECIAL))                      
+SETR RACLIST(CDT) REFRESH                                               
+SETR CLASSACT(IZP) GENERIC(IZP) RACLIST(IZP)                            
+$$                                                                      
