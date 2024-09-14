@@ -1,0 +1,6 @@
+READY                                        
+LISTCAT ENTRIES('IZP.CUST.DBA.ENCRYPT')      
+NONVSAM ------- IZP.CUST.DBA.ENCRYPT         
+     IN-CAT --- CATALOG.Z31A.MASTER          
+READY                                        
+END                                          
