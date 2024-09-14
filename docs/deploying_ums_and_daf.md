@@ -363,7 +363,7 @@ If I had assumed it was OK to continue because the class already exists, I would
 1. IZPB1R makes changes to the IZP class definition that are necessary to support RACF generic profiles.
 2. The IBM-supplied CDT entry does not support generic profiles
 3. By specifying profileQualifier:S0W1 in ZWEYAML I am requiring generic profiles
-4. IZPGENER generated jobs that perform RACF PERMITs against generic profiles rather than discrete profiles
+4. IZPGENER generated job IZPB2R (below) that defines generic profiles rather than discrete profiles. These profiles would not work id the CDT entry didn't allow generic profiles.
 
 
 So, I edited the IZPB1R job to remove the RDEF command, so that all the subsequent RALT commands were executed, and the IBM-supplied IZP class definition is changed to support generic profiles.
@@ -372,8 +372,8 @@ So, I edited the IZPB1R job to remove the RDEF command, so that all the subseque
 
 ### 4.8 IZPB2R
 IZPB2R Add security role profiles to the IZP class.  
-* [IZPB2R](here)
-* [IZPB2RV](here) 
+* [IZPB2R](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPB2R.TXT)
+* [IZPB2RV](https://github.com/zeditor01/using_zowe/blob/main/samples/IZPB2VR.TXT)
 
 
 ### 4.9 IZPB4R
