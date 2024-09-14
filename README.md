@@ -5,22 +5,21 @@
 
 Imagine a world where mainframe operations are as intuitive and accessible as modern cloud platforms. This is the reality ZOWE brings to z/OS environments, offering a suite of open-source tools that transform how developers and system administrators interact with mainframe systems.
 
+ZOWE addresses the needs of many IT groups, such as application developers, systems programmers, devops engineers and operations support staff. It also supports Database Engineering specialists.
+
 Streamlined Db2 z/OS Database Administration
-ZOWE provides a powerful, browser-based graphical user interface that simplifies a wide range of Db2 z/OS Database Administration tasks. This modern interface allows DBAs to:
-* Execute complex queries with ease
+* ZOWE provides a powerful, browser-based graphical user interface that simplifies a wide range of Db2 z/OS Database Administration tasks. 
+* Execute complex queries with ease, and invoke SQL tuning services
 * Manage database objects efficiently
-* Monitor performance in real-time
 * Troubleshoot issues quickly
 
-API-Driven Integration
-* At the heart of ZOWE is a comprehensive API catalog, offering:
+API-Driven Integration with a comprehensive API catalog, offering:
 * Reusable database services
 * Seamless integration with existing tools
 * Enhanced interoperability between mainframe and distributed systems
 * Simplified development of new mainframe applications
 
-Zero Footprint Outside z/OS
-* One of ZOWE's key advantages is its ability to run entirely within the z/OS environment:
+Zero Footprint Outside z/OS: The ZOWE server runs entirely within the z/OS environment:
 * No need for external clients or servers
 * Reduced infrastructure complexity
 * Enhanced security by keeping operations within the mainframe
@@ -32,24 +31,6 @@ CLI tools for command-line operations
 API Mediation Layer for service discovery and API gateway functionality
 Web UI for intuitive, graphical interactions with z/OS
 By leveraging these components, organizations can modernize their mainframe operations, improve developer productivity, and bridge the gap between legacy systems and contemporary IT practices.
-
-
-
-
-
-
-
-
-# Using ZOWE
-Worked Examples of Deploying ZOWE and Associated IBM Db2 Tools.
-
-## Imagine...
-* A productive browser-based graphical user interface to perform a wide range of Db2 z/OS Database Administration work tasks. 
-* A Catalog of APIs to provide callable database services that can be re-used by multiple integrated tools.
-* All provided from services running in z/OS, without needing to deploy any clients or servers outside of z/OS.
-
-## ZOWE offers:
-Zowe offers modern interfaces to interact with z/OS similar to what you may experience on cloud platforms today. 
 
 The home of ZOWE is at [www.zowe.org](https://www.zowe.org/)
 
