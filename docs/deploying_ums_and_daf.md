@@ -362,7 +362,7 @@ ICH10102I IZP ALREADY DEFINED TO CLASS CDT.
 If I had assumed it was OK to continue because the class already exists, I would be wrong, because 
 1. IZPB1R makes changes to the IZP class definition that are necessary to support RACF generic profiles.
 2. The IBM-supplied CDT entry does not support generic profiles
-3. By specifying profileQualifier:S0W1 in ZWEYAML I am requiring generic profiles
+3. By specifying ```profileQualifier:S0W1``` in ZWEYAML I am requiring IZPGENER to create customisation jobs that define generic profiles
 4. IZPGENER generated job IZPB2R (below) that defines generic profiles rather than discrete profiles. These profiles would not work id the CDT entry didn't allow generic profiles.
 
 
