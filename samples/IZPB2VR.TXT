@@ -1,0 +1,53 @@
+READY                                                            
+RL IZP IZP.SUPER*                                                
+CLASS      NAME                                                  
+-----      ----                                                  
+IZP        IZP.SUPER* (G)                                        
+                                                                 
+LEVEL  OWNER      UNIVERSAL ACCESS  YOUR ACCESS  WARNING         
+-----  --------   ----------------  -----------  -------         
+ 00    IBMUSER         NONE              ALTER    NO             
+                                                                 
+INSTALLATION DATA                                                
+-----------------                                                
+NONE                                                             
+                                                                 
+APPLICATION DATA                                                 
+----------------                                                 
+NONE                                                             
+                                                                 
+AUDITING                                                         
+--------                                                         
+FAILURES(READ)                                                   
+                                                                 
+NOTIFY                                                           
+------                                                           
+NO USER TO BE NOTIFIED                                           
+READY                                                            
+READY                                                            
+RL IZP IZP.ADMIN*                                                
+CLASS      NAME                                                  
+-----      ----                                                  
+IZP        IZP.ADMIN* (G)                                        
+                                                                 
+LEVEL  OWNER      UNIVERSAL ACCESS  YOUR ACCESS  WARNING         
+-----  --------   ----------------  -----------  -------         
+ 00    IBMUSER         NONE              ALTER    NO             
+                                                                 
+INSTALLATION DATA                                                
+-----------------                                                
+NONE                                                             
+                                                                 
+APPLICATION DATA                                                 
+----------------                                                 
+NONE                                                             
+                                                                 
+AUDITING                                                         
+--------                                                         
+FAILURES(READ)                                                   
+                                                                 
+NOTIFY                                                           
+------                                                           
+NO USER TO BE NOTIFIED                                           
+READY                                                            
+END                                                              
