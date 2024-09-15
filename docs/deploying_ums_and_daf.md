@@ -40,7 +40,7 @@ Hopefully it will also make it easier to consume the ZOWE documentation.
 ### 1.3 Pre-Requisite Software
 The hardware and software pre-requisites for UMS and the Db2 experiences are documented [here](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-prerequisite-hardware-software)
 
-In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. You should check the pre-requisites before proceeding.
+In addition to z/OS V2.4 or later, ICSF and RACF, minimum versions of ZOWE, and a number of PTF levels are documented at the link above. Specifically, PTFs are required to support "tools discovery" which is required for some Db2 Administration Foundation services to work. You should check the pre-requisites before proceeding.
 
 ### 1.4 Before you Begin
 The Knowledge Center contains a ["Before You Begin"](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=installation-before-you-begin) section that is very important. 
