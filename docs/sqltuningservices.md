@@ -6,13 +6,13 @@ Last Update to this page: 4 September 2024
 
 ***Purpose of this Chapter***
 Configuring SQL Tuning Services is something that should be performed as part of any Db2 z/OS deployment, regardless of whether ZOWE-based tools are going to be used.
-The Db2 z/OS v13 knowledge center does a pretty good job of explaining how to configure SQL Tuning Services.
+The Db2 z/OS v13 knowledge center does a pretty good job of explaining how to configure SQL Tuning Services [here](https://www.ibm.com/docs/en/db2-for-zos/13?topic=db2-sql-tuning-services)
 
 This chapter is the audit trail of how it was done for this system.
-The integration of Db2 Admin Foundation into SQl Tuning Services is covered elsewhere.
+The integration of Db2 Admin Foundation into SQl Tuning Services is covered [here](https://github.com/zeditor01/using_zowe/blob/main/docs/configure_daf.md)
 
 ## Contents
-1. Allocate System Capacity - OK
+1. Allocate System Capacity  
 2. Assign Userids to install, configure, administer SQL Tuning Services 
 3. Configure Network Ports - take defaults 
 4. Configure SQL Tuning Services Environment (USS env) and setup ID 
@@ -22,7 +22,33 @@ The integration of Db2 Admin Foundation into SQl Tuning Services is covered else
 8. Setup Tuning Services Environment (repository DB, tuning profile, explain tables) 
 
 
-## 1. Configure DDL Generation Services.
+
+
+## 1. Allocate System Capacity  
+
+The architecture of Db2 z/OS SQL Tuning Services is as follows.
+* a Liberty Server running in USS
+* a Db2 Repository database to store tuning data
+* connections to Db2 target databases to be tuned
+
+You need to have sufficient resources to run the Server. [here](https://www.ibm.com/docs/en/db2-for-zos/13?topic=services-installation-prerequisites)
+
+## 2. Assign Userids to install, configure, administer SQL Tuning Services
+
+## 3. Configure Network Ports - take defaults
+
+## 4. Configure SQL Tuning Services Environment (USS env) and setup ID
+
+## 5. Install and Configure SQL Tuning Services 
+
+
+## 6. Optionally - configure AT-TLS 
+
+
+## 7. Optionally - install license
+
+## 8. Setup Tuning Services Environment (repository DB, tuning profile, explain tables) 
+
 
 
 
