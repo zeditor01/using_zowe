@@ -1,7 +1,29 @@
-# Header
+[Back to Index](https://github.com/zeditor01/using_zowe/blob/main/README.md)
 
-xxx
-xxx
+Last Update to this page: 4 September 2024
+
+# Configure SQL Tuning Services 
+
+***Purpose of this Chapter***
+Configuring SQL Tuning Services is something that should be performed as part of any Db2 z/OS deployment, regardless of whether ZOWE-based tools are going to be used.
+The Db2 z/OS v13 knowledge center does a pretty good job of explaining how to configure SQL Tuning Services.
+
+This chapter is the audit trail of how it was done for this system.
+The integration of Db2 Admin Foundation into SQl Tuning Services is covered elsewhere.
+
+## Contents
+1. Allocate System Capacity - OK
+2. Assign Userids to install, configure, administer SQL Tuning Services 
+3. Configure Network Ports - take defaults 
+4. Configure SQL Tuning Services Environment (USS env) and setup ID 
+5. Install and Configure SQL Tuning Services 
+6. Optionally - configure AT-TLS 
+7. Optionally - install license
+8. Setup Tuning Services Environment (repository DB, tuning profile, explain tables) 
+
+
+## 1. Configure DDL Generation Services.
+
 
 
 
